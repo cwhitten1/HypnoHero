@@ -3,6 +3,7 @@
 public class PlayerMovement : MonoBehaviour
 {
 	public float speed = 6f;
+	private float rotationSmoothing = 10f;
 
 	Vector3 movement;
 	Animator anim;
@@ -21,7 +22,8 @@ public class PlayerMovement : MonoBehaviour
 		float v = Input.GetAxisRaw("Vertical"); 
 
 		Move (h, v);
-		Turning ();
+		DiscreteTurning (h, v);
+		//Turning ();
 		//Animating (h, v);
 	}
 
@@ -43,6 +45,39 @@ public class PlayerMovement : MonoBehaviour
 			Quaternion newRotation = Quaternion.LookRotation (playerToMouse);
 			playerRigidBody.MoveRotation (newRotation);
 		}
+	}
+
+	void DiscreteTurning(float h, float v){
+		float rotationY = 0;
+
+		//Sorry for the conditional logic block
+		if (v == 1) {
+			if (h == 0)
+				rotationY = 0;
+			else if (h == 1)
+				rotationY = 45;
+			else if (h == -1)
+				rotationY = -45;
+		} 
+		else if (v == -1) {
+			
+			if (h == 0)
+				rotationY = 180;
+			else if (h == 1)
+				rotationY = 135;
+			else if (h == -1)
+				rotationY = -135;
+		} 
+		else if (v == 0){
+			if (h == 0)
+				return;
+			else if (h == 1)
+				rotationY = 90;
+			else if (h == -1)
+				rotationY = -90;
+		}
+			
+		transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler (0, rotationY, 0), Time.deltaTime * rotationSmoothing);
 	}
 
 	void Animating(float h, float v){

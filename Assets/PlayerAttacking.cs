@@ -51,7 +51,7 @@ public class PlayerAttacking : MonoBehaviour
 		GameObject otherObj = other.gameObject;
 
 		//Our attackable object has left
-		if(otherObj.GetInstanceID == attackableObject.GetInstanceID)
+		if(otherObj.GetInstanceID() == attackableObject.GetInstanceID())
 			attackableObject = null;
 	}
 
