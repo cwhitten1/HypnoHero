@@ -945,8 +945,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 94.21928, y: 113.636826, z: -63.354618}
-  m_Center: {x: 0.1671187, y: 51.818413, z: 65.12221}
+  m_Size: {x: 94.21928, y: 87.79683, z: -78.85766}
+  m_Center: {x: 0.1671187, y: 64.73841, z: 57.37073}
 --- !u!114 &655034073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -958,9 +958,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c8a6a318ef34484b9e84584643271f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePerShot: 20
+  damagePerHit: 20
   timeBetweenAttacks: 0.25
-  range: 10
 --- !u!1 &664074988
 GameObject:
   m_ObjectHideFlags: 0
@@ -2707,7 +2706,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 35
+  m_Radius: 40
   m_Center: {x: 0, y: 0, z: 10}
 --- !u!135 &1351481506
 SphereCollider:
@@ -2719,7 +2718,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 30
+  m_Radius: 40
   m_Center: {x: 0, y: 20, z: -2}
 --- !u!54 &1351481507
 Rigidbody:
@@ -2910,6 +2909,10 @@ Prefab:
     - target: {fileID: 9500000, guid: df0777a2e75ec7048b28e7c394efbd53, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: df0777a2e75ec7048b28e7c394efbd53, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11100000, guid: df0777a2e75ec7048b28e7c394efbd53, type: 3}

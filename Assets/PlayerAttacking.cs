@@ -12,8 +12,9 @@ public class PlayerAttacking : MonoBehaviour
 
 	void Awake ()
 	{
-		attackableMask = LayerMask.GetMask ("Attackable");
+		attackableMask = LayerMask.NameToLayer ("Attackable");
 		attackCollider = GetComponent<BoxCollider> ();
+		attackableObject = null;
 	}
 
 
@@ -43,16 +44,20 @@ public class PlayerAttacking : MonoBehaviour
 	void OnTriggerEnter(Collider other){
 		GameObject otherObj = other.gameObject;
 
-		if(otherObj.layer == attackableMask && attackableObject == null)
+		if (otherObj.layer == attackableMask) {
 			attackableObject = other.gameObject;
+			//Debug.Log (attackableObject.name + " is in range");
+		}
 	}
 
 	void OnTriggerExit(Collider other){
 		GameObject otherObj = other.gameObject;
 
 		//Our attackable object has left
-		if(otherObj.GetInstanceID() == attackableObject.GetInstanceID())
+		if (attackableObject != null && otherObj.GetInstanceID () == attackableObject.GetInstanceID ()) {
+			//Debug.Log (attackableObject.name + " is now out of range");
 			attackableObject = null;
+		}
 	}
 
 	void OnTriggerStay(Collider other){
