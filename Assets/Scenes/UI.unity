@@ -521,7 +521,7 @@ GameObject:
   - 114: {fileID: 628679950}
   - 114: {fileID: 628679949}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -882,7 +882,7 @@ GameObject:
   - 114: {fileID: 1276492005}
   - 114: {fileID: 1276492006}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: ScareMeter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1118,7 +1118,7 @@ GameObject:
   - 114: {fileID: 1405420890}
   - 114: {fileID: 1405420889}
   m_Layer: 5
-  m_Name: Slider-Copy
+  m_Name: ConfidenceMeter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
