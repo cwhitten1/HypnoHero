@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
 		Move (h, v);
 		Turning ();
-		Animating (h, v);
+		//Animating (h, v);
 	}
 
 	void Move(float h, float v){
