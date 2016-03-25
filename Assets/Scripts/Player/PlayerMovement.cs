@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -6,14 +7,14 @@ public class PlayerMovement : MonoBehaviour
 	private float rotationSmoothing = 10f;
 
 	Vector3 movement;
-	Animator anim;
+	Animation anim;
 	Rigidbody playerRigidBody;
 	int floorMask;
 	float camRayLength = 100f;
 
 	void Awake(){
 		floorMask = LayerMask.GetMask ("Floor");
-		anim = GetComponent<Animator> ();
+		anim = GetComponent<Animation> ();
 		playerRigidBody = GetComponent<Rigidbody> ();
 	}
 
@@ -25,6 +26,17 @@ public class PlayerMovement : MonoBehaviour
 		DiscreteTurning (h, v);
 		//Turning ();
 		//Animating (h, v);
+	}
+
+	void Update(){
+		float h = Input.GetAxisRaw("Horizontal"); //Raw axis returns either -1,0,1
+		float v = Input.GetAxisRaw("Vertical"); 
+
+		if (h != 0 || v != 0)
+			anim.CrossFade ("Walk");
+		else
+			anim.CrossFade ("Wait");
+
 	}
 
 	void Move(float h, float v){
@@ -79,10 +91,5 @@ public class PlayerMovement : MonoBehaviour
 			
 		transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler (0, rotationY, 0), Time.deltaTime * rotationSmoothing);
 	}
-
-	void Animating(float h, float v){
-		bool walking = h != 0f || v != 0f;
-
-		anim.SetBool ("IsWalking", walking);
-	}
+		
 }

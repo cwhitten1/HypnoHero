@@ -3683,7 +3683,6 @@ GameObject:
   - 108: {fileID: 655034077}
   - 114: {fileID: 655034068}
   - 114: {fileID: 655034073}
-  - 114: {fileID: 655034074}
   - 114: {fileID: 655034075}
   m_Layer: 8
   m_Name: Player
@@ -3703,7 +3702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec45203ae7a1a54c9d02c355f983833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 10
 --- !u!4 &655034069
 Transform:
   m_ObjectHideFlags: 0
@@ -3741,9 +3740,13 @@ Animation:
   m_GameObject: {fileID: 655034067}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 49b297db20eec434cb72977e88d5107b, type: 3}
+  m_Animation: {fileID: 7400000, guid: ac1d9b0420ad1b146b5d57d7729b647e, type: 3}
   m_Animations:
   - {fileID: 7400000, guid: 49b297db20eec434cb72977e88d5107b, type: 3}
+  - {fileID: 7400000, guid: afa46a7eafad7874da3988d082799d38, type: 3}
+  - {fileID: 7400000, guid: ac1d9b0420ad1b146b5d57d7729b647e, type: 3}
+  - {fileID: 7400000, guid: 119550f2b2b0fe748875dc68a648b28c, type: 3}
+  - {fileID: 7400000, guid: cb0d6a1bee21e754e955d5a0bed61fdf, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -3773,20 +3776,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePerHit: 20
   timeBetweenAttacks: 0.25
---- !u!114 &655034074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 655034067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27c63be2a8918c741863160b9d9da122, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damagePerShot: 20
-  timeBetweenBullets: 0.15
-  range: 100
 --- !u!114 &655034075
 MonoBehaviour:
   m_ObjectHideFlags: 0
