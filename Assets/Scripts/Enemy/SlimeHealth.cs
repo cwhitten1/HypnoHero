@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 internal class SlimeHealth : MonoBehaviour
 {
-    public int startingHealth = 100000000; //Say "Hello" to my little friend!
+    public int startingHealth = 1000000000; //Say "Hello" to my little friend!
     public int currentHealth;
     //public Slider healthSlider;
-    //public Image damageImage;
+    public Image damageImage;
     public AudioClip deathClip;
     public float flashSpeed = 5f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
@@ -22,29 +22,32 @@ internal class SlimeHealth : MonoBehaviour
     bool isDead;
     bool damaged;
 
+    Game game;
+
     void Awake()
     {
+        game = Game.GetGame();
+
         anim = GetComponent<Animator>();
         slimeAudio = GetComponent<AudioSource>();
         slimeMovement = GetComponent<SlimeMovement>();
         //slimeShooting = GetComponentInChildren<SlimeShooting>();
-        currentHealth = startingHealth;
+        currentHealth = 100; // set it to a more reasonable value
     }
 
-/*
     void Update()
     {
         if (damaged)
         {
-            damageImage.color = flashColour;
+           // damageImage.color = flashColour;
         }
         else
         {
-            damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+           // damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
         }
         damaged = false;
     }
-*/
+
 
     public void TakeDamage(int amount)
     {
@@ -65,6 +68,7 @@ internal class SlimeHealth : MonoBehaviour
 
     void Death()
     {
+        
         isDead = true;
 
         //slimeShooting.DisableEffects();
@@ -76,12 +80,6 @@ internal class SlimeHealth : MonoBehaviour
 
         slimeMovement.enabled = false;
         //slimeShooting.enabled = false;
-    }
-
-
-    public void RestartLevel()
-    {
-        SceneManager.LoadScene(0);
     }
 
     internal void TakeDamage(int damagePerShot, Vector3 point)

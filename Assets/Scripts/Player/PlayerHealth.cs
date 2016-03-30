@@ -22,9 +22,13 @@ public class PlayerHealth : MonoBehaviour
     bool isDead;
     bool damaged;
 
+    Game game;
+
 
     void Awake ()
     {
+        game = Game.GetGame();
+
         anim = GetComponent <Animator> ();
         playerAudio = GetComponent <AudioSource> ();
         playerMovement = GetComponent <PlayerMovement> ();
@@ -35,9 +39,10 @@ public class PlayerHealth : MonoBehaviour
 
     void Update ()
     {
-        if(damaged)
+        
+        if (damaged)
         {
-            damageImage.color = flashColour;
+            //damageImage.color = flashColour;
         }
         else
         {
@@ -51,13 +56,13 @@ public class PlayerHealth : MonoBehaviour
     {
         damaged = true;
 
-        currentHealth -= amount;
+        game.SubtractScare(amount);
 
-        healthSlider.value = currentHealth;
+        //healthSlider.value = currentHealth*0.1f;
 
-        playerAudio.Play ();
-
-        if(currentHealth <= 0 && !isDead)
+        //playerAudio.Play ();
+        
+        if (game.GetScare() <= 0 && !isDead)
         {
             Death ();
         }
@@ -66,22 +71,19 @@ public class PlayerHealth : MonoBehaviour
 
     void Death ()
     {
+
+        game.RestartLevel();
+
         isDead = true;
 
-        playerShooting.DisableEffects ();
+        //playerShooting.DisableEffects ();
 
         anim.SetTrigger ("Die");
 
-        playerAudio.clip = deathClip;
-        playerAudio.Play ();
+        //playerAudio.clip = deathClip;
+        //playerAudio.Play ();
 
         playerMovement.enabled = false;
-        playerShooting.enabled = false;
-    }
-
-
-    public void RestartLevel ()
-    {
-        SceneManager.LoadScene (0);
+        //playerShooting.enabled = false;
     }
 }
