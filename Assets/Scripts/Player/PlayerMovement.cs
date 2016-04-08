@@ -4,31 +4,61 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
 	public float speed = 6f;
+    public float stealthDistance = 5f;
+    public bool isStealth = false;
 	private float rotationSmoothing = 10f;
+    
 
 	Vector3 movement;
 	Animation anim;
 	Rigidbody playerRigidBody;
-	int floorMask;
+    Transform player;               // Reference to the player's position.
+    GameObject[] stealthObjects;
+
+    int floorMask;
 	float camRayLength = 100f;
 
 	void Awake(){
 		floorMask = LayerMask.GetMask ("Floor");
 		anim = GetComponent<Animation> ();
 		playerRigidBody = GetComponent<Rigidbody> ();
-	}
+
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        stealthObjects = GameObject.FindGameObjectsWithTag("Stealth");
+    }
 
 	void FixedUpdate(){
 		float h = Input.GetAxisRaw("Horizontal"); //Raw axis returns either -1,0,1
-		float v = Input.GetAxisRaw("Vertical"); 
+		float v = Input.GetAxisRaw("Vertical");
 
-		Move (h, v);
+
+        Move (h, v);
 		DiscreteTurning (h, v);
 		//Turning ();
 		//Animating (h, v);
 	}
 
 	void Update(){
+        foreach (var obj in stealthObjects)
+        {
+            float objX = obj.transform.position.x,
+            objZ = obj.transform.position.z,
+
+            distanceFromPlayer = Mathf.Pow(player.position.x - objX, 2) + Mathf.Pow(player.position.z - objZ, 2);
+            distanceFromPlayer = Mathf.Sqrt(distanceFromPlayer);
+
+            if (distanceFromPlayer <= stealthDistance)
+            {
+                Debug.Log("Player is stealth!");
+                isStealth = true;
+                return;
+            }
+            else {
+                isStealth = false;
+                Debug.Log("Player isn't stealth!");
+            }
+        }
+
 		float h = Input.GetAxisRaw("Horizontal"); //Raw axis returns either -1,0,1
 		float v = Input.GetAxisRaw("Vertical"); 
 
