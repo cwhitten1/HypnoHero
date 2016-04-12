@@ -4630,6 +4630,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 3
+  timerInterval: 1.5
+  rangeBound: 10
 --- !u!114 &391048229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10595,6 +10597,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 3
+  timerInterval: 1.5
+  rangeBound: 10
 --- !u!95 &940272764
 Animator:
   serializedVersion: 3
@@ -12166,6 +12170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 3
+  timerInterval: 1.5
+  rangeBound: 10
 --- !u!114 &1047504375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12665,6 +12671,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 3
+  timerInterval: 1.5
+  rangeBound: 10
 --- !u!95 &1085004024
 Animator:
   serializedVersion: 3
@@ -13075,6 +13083,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 3
+  timerInterval: 1.5
+  rangeBound: 10
 --- !u!95 &1107107684
 Animator:
   serializedVersion: 3
@@ -13800,6 +13810,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 3
+  timerInterval: 1.5
+  rangeBound: 10
 --- !u!114 &1154772863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15949,6 +15961,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 3
+  timerInterval: 1.5
+  rangeBound: 10
 --- !u!95 &1340024254
 Animator:
   serializedVersion: 3
@@ -16359,6 +16373,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 3
+  timerInterval: 1.5
+  rangeBound: 10
 --- !u!1 &1358003062
 GameObject:
   m_ObjectHideFlags: 0
@@ -16756,6 +16772,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 3
+  timerInterval: 1.5
+  rangeBound: 10
 --- !u!95 &1390368799
 Animator:
   serializedVersion: 3
@@ -19082,6 +19100,10 @@ Prefab:
     - target: {fileID: 191002, guid: daabafbd6acd6994d885a612510ea80c, type: 2}
       propertyPath: m_TagString
       value: Stealth
+      objectReference: {fileID: 0}
+    - target: {fileID: 11471016, guid: daabafbd6acd6994d885a612510ea80c, type: 2}
+      propertyPath: rangeBound
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: daabafbd6acd6994d885a612510ea80c, type: 2}
@@ -21464,6 +21486,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 3
+  timerInterval: 1.5
+  rangeBound: 10
 --- !u!95 &1826581656
 Animator:
   serializedVersion: 3

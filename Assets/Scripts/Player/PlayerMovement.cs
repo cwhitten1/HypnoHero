@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (distanceFromPlayer <= stealthDistance)
             {
-                Debug.Log("Player is stealth!");
+                //Debug.Log("Player is stealth!");
 
                 //Change Colors
                 isStealth = true;
@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                Debug.Log("Player isn't stealth!");
+                //Debug.Log("Player isn't stealth!");
                 isStealth = false;
                 SetStealth(isStealth);
             }

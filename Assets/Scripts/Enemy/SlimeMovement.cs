@@ -9,8 +9,9 @@ public class SlimeMovement : MonoBehaviour
     NavMeshAgent nav;               // Reference to the nav mesh agent.
     PlayerMovement playerMove;
     public float attackRange = 3f;
-
-
+    public float timerInterval = 1.5f;
+    public float rangeBound = 10f;
+    float timeLeft = 0f;
 
     void Awake()
     {
@@ -35,16 +36,46 @@ public class SlimeMovement : MonoBehaviour
         if (enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0 && distanceFromPlayer > attackRange)
         {
 
+            //Debug.Log("Player out of range.");
             // ... set the destination of the nav mesh agent to the player.
-            if (nav.enabled && playerMove.isStealth == false)
+            if (nav.enabled && !playerMove.isStealth)
+            {
                 nav.SetDestination(player.position);
-
+                Debug.Log("Chasing player.");
+            }
+            if (nav.enabled && playerMove.isStealth)
+            {
+                //Debug.Log("Player is out of range and stealth.");
+                //nav.enabled = false;
+                RunAway();
+            }
         }
-        // Otherwise...
-        else
+        else if (distanceFromPlayer <= attackRange)
         {
-            // ... disable the nav mesh agent.
-            nav.enabled = false;
+            if (playerMove.isStealth)
+            {
+                Debug.Log("Player in range and stealth");
+                RunAway();
+            }
+            else
+            {
+                Debug.Log("Player in range and not stealth");
+                nav.enabled = false;
+            }
+        }
+    }
+
+    void RunAway()
+    {
+        timeLeft -= Time.deltaTime;
+        if (timeLeft < 0)
+        {
+            Vector3 nextPos;
+            nextPos.x = nav.nextPosition.x + Random.Range(-1 * rangeBound, rangeBound);
+            nextPos.z = nav.nextPosition.z + Random.Range(-1 * rangeBound, rangeBound);
+            nextPos.y = nav.nextPosition.y;
+            nav.SetDestination(nextPos);
+            timeLeft = timerInterval;
         }
     }
 }
