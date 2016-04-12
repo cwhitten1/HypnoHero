@@ -4646,6 +4646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100000000
   currentHealth: 0
+  damageImage: {fileID: 0}
   deathClip: {fileID: 0}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
@@ -7550,29 +7551,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 655034067}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10c64584e2fbb564f912775eeca33921, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a19cb86f2c59f74bae919c34ab3bc66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knight: {fileID: 0}
-  smr: {fileID: 0}
-  colorToBecome:
-    r: 0
-    g: 0
-    b: 0
-    a: 0
-  __colorChangeInAction: 0
-  TriggerColorChange: 1
-  fadeTime: 1.5
-  full:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  fade:
-    r: 1
-    g: 1
-    b: 1
-    a: 0
+  damagePerHit: 50
+  timeBetweenAttacks: 0.25
 --- !u!114 &655034075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10582,6 +10565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100000000
   currentHealth: 0
+  damageImage: {fileID: 0}
   deathClip: {fileID: 0}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
@@ -12186,6 +12170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100000000
   currentHealth: 0
+  damageImage: {fileID: 0}
   deathClip: {fileID: 0}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
@@ -12656,6 +12641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100000000
   currentHealth: 0
+  damageImage: {fileID: 0}
   deathClip: {fileID: 0}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
@@ -13067,6 +13053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100000000
   currentHealth: 0
+  damageImage: {fileID: 0}
   deathClip: {fileID: 0}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
@@ -13826,6 +13813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100000000
   currentHealth: 0
+  damageImage: {fileID: 0}
   deathClip: {fileID: 0}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
@@ -15945,6 +15933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100000000
   currentHealth: 0
+  damageImage: {fileID: 0}
   deathClip: {fileID: 0}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
@@ -16357,6 +16346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100000000
   currentHealth: 0
+  damageImage: {fileID: 0}
   deathClip: {fileID: 0}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
@@ -16756,6 +16746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100000000
   currentHealth: 0
+  damageImage: {fileID: 0}
   deathClip: {fileID: 0}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
@@ -18364,6 +18355,45 @@ Transform:
   - {fileID: 102118545}
   m_Father: {fileID: 1945589962}
   m_RootOrder: 0
+--- !u!1 &1520021466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1520021468}
+  - 114: {fileID: 1520021467}
+  m_Layer: 0
+  m_Name: Game
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1520021467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1520021466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e389087193a585442977979e3c83711d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1520021468
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1520021466}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
 --- !u!1 &1535771258
 GameObject:
   m_ObjectHideFlags: 0
@@ -21471,6 +21501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100000000
   currentHealth: 0
+  damageImage: {fileID: 0}
   deathClip: {fileID: 0}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
