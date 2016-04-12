@@ -2,7 +2,7 @@
 
 public class PlayerAttacking : MonoBehaviour
 {
-	public int damagePerHit = 20;
+	public int damagePerHit = 50;
 	public float timeBetweenAttacks = 0.25f;
 	private GameObject attackableObject;
 
@@ -40,16 +40,20 @@ public class PlayerAttacking : MonoBehaviour
 
 		//Start attack animation here
 		anim.CrossFade("Attack");
+        
+		if(attackableObject != null){
+            //attackableObject.GetComponent<SlimeHealth>().currentHealth -= 400000000;
+            attackableObject.GetComponent<SlimeHealth>().TakeDamage (damagePerHit);
+            
+            //GameSystem.RestartLevel();
 
-		/*if(attackableObject != null){
-			((SlimeHealth)attackableObject).TakeDamage (damagePerHit);
-		}*/
+        }
 	}
 
 	void OnTriggerEnter(Collider other){
 		GameObject otherObj = other.gameObject;
-
-		if (otherObj.layer == attackableMask) {
+        //GameObject.Find("Player").GetComponent<PlayerHealth>().TakeDamage(1);
+        if (otherObj.layer == attackableMask) {
 			attackableObject = other.gameObject;
 			//Debug.Log (attackableObject.name + " is in range");
 		}
