@@ -9,12 +9,16 @@ public class PlayerAttacking : MonoBehaviour
 	float timer;
 	int attackableMask;
 	BoxCollider attackCollider;
+	Animation anim;
 
 	void Awake ()
 	{
 		attackableMask = LayerMask.NameToLayer ("Attackable");
 		attackCollider = GetComponent<BoxCollider> ();
 		attackableObject = null;
+
+		anim = GetComponent<Animation> ();
+		anim ["Attack"].layer = 1;
 	}
 
 
@@ -25,6 +29,7 @@ public class PlayerAttacking : MonoBehaviour
 		if(Input.GetButton ("Fire1") && timer >= timeBetweenAttacks && Time.timeScale != 0)
 		{
 			Attack ();
+			Debug.LogWarning ("Attacking");
 		}
 			
 	}
@@ -34,11 +39,11 @@ public class PlayerAttacking : MonoBehaviour
 		timer = 0f;
 
 		//Start attack animation here
-		//AttackAnimation();
+		anim.CrossFade("Attack");
 
-		if(attackableObject != null){
-			//Call takeDamage() method on attackableObject
-		}
+		/*if(attackableObject != null){
+			((SlimeHealth)attackableObject).TakeDamage (damagePerHit);
+		}*/
 	}
 
 	void OnTriggerEnter(Collider other){

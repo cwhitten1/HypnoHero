@@ -9,7 +9,7 @@ Material:
   m_Name: PC_Dif
   m_Shader: {fileID: 13, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
-  m_LightmapFlags: 5
+  m_LightmapFlags: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
@@ -19,21 +19,21 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 7e56a72dfaeb1f74a91bca0c522ddcf2, type: 3}
+          m_Texture: {fileID: 2800000, guid: 7e5aed87f54513449a1a59758ff0e250, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 2800000, guid: 60777246830460e448aaa7036eb250bc, type: 3}
+          m_Texture: {fileID: 2800000, guid: dae7e214521b52b4f8292d3b0f22cdcd, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _Illum
         second:
-          m_Texture: {fileID: 2800000, guid: a3d577a4fe4614a40861088fca1b06ff, type: 3}
+          m_Texture: {fileID: 2800000, guid: 1ec508244bf3691429e9e08745d527f6, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -41,6 +41,10 @@ Material:
         first:
           name: _Shininess
         second: 0.47339645
+      data:
+        first:
+          name: _Emission
+        second: 1
       data:
         first:
           name: _EmissionLM
