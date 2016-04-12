@@ -1888,7 +1888,7 @@ GameObject:
   - 137: {fileID: 161208532}
   m_Layer: 0
   m_Name: Knight
-  m_TagString: Untagged
+  m_TagString: PlayerModel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5724,6 +5724,10 @@ Prefab:
       propertyPath: m_TagString
       value: Stealth
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: aaa50475e6212254b990f837c16b6e97, type: 2}
+      propertyPath: m_TagString
+      value: Stealth
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aaa50475e6212254b990f837c16b6e97, type: 2}
   m_IsPrefabParent: 0
@@ -7439,6 +7443,7 @@ GameObject:
   - 114: {fileID: 655034068}
   - 114: {fileID: 655034075}
   - 114: {fileID: 655034073}
+  - 114: {fileID: 655034074}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -7459,7 +7464,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   stealthDistance: 5
-  isStealth: 0
+  normColor: {r: 0.8161765, g: 0.8161765, b: 0.8161765, a: 1}
+  stealthColor: {r: 0.25, g: 0.25, b: 0.25, a: 1}
+  isStealth: 1
 --- !u!4 &655034069
 Transform:
   m_ObjectHideFlags: 0
@@ -7533,6 +7540,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePerHit: 20
   timeBetweenAttacks: 0.25
+--- !u!114 &655034074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 655034067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c64584e2fbb564f912775eeca33921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knight: {fileID: 0}
+  smr: {fileID: 0}
+  colorToBecome:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
+  __colorChangeInAction: 0
+  TriggerColorChange: 1
+  fadeTime: 1.5
+  full:
+    r: 1
+    g: 1
+    b: 1
+    a: 1
+  fade:
+    r: 1
+    g: 1
+    b: 1
+    a: 0
 --- !u!114 &655034075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18121,7 +18159,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 23519cd5655dd0344a3ecd4031d6bce7, type: 2}
+  - {fileID: 2100000, guid: b7850a01a541b6c4684b561d36eddb8f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -19032,6 +19070,18 @@ Prefab:
     - target: {fileID: 187794, guid: daabafbd6acd6994d885a612510ea80c, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 192116, guid: daabafbd6acd6994d885a612510ea80c, type: 2}
+      propertyPath: m_TagString
+      value: Stealth
+      objectReference: {fileID: 0}
+    - target: {fileID: 197316, guid: daabafbd6acd6994d885a612510ea80c, type: 2}
+      propertyPath: m_TagString
+      value: Stealth
+      objectReference: {fileID: 0}
+    - target: {fileID: 191002, guid: daabafbd6acd6994d885a612510ea80c, type: 2}
+      propertyPath: m_TagString
+      value: Stealth
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: daabafbd6acd6994d885a612510ea80c, type: 2}
@@ -24108,7 +24158,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: a14478d65d9f6124996776affa982943, type: 2}
+  - {fileID: 2100000, guid: 8219048a3563e4d44804f8a1e4bb7667, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
