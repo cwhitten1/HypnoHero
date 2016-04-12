@@ -50,56 +50,50 @@ public class SlimeMovement : MonoBehaviour
         if (!nav.enabled && distanceFromPlayer > attackRange)
             nav.enabled = true;
 
+      
 
-        if (enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0)
+        bool playerAlive = playerHealth.currentHealth > 0,
+        mobAlive = enemyHealth.currentHealth > 0,
+        outOfRange = distanceFromPlayer > attackRange;
+
+        if (mobAlive && playerAlive)
         {
-
-            //canAttack = false;
-            var heading = player.position - gameObject.transform.position;
-            var distance = heading.magnitude;
-            //canAttack = true;
-            if (distance < 4)
+            //Player out of attack range.
+            if (outOfRange)
             {
-                Attack();
+                //Or not attacking?
+                if (nav.enabled)
+                {
+                    //Player stealth.
+                    if (playerMove.isStealth) {
+                        //nav.enabled = false;
+                        RunAway();
+                    }
+                    //Player not stealth.
+                    else
+                    {
+                        nav.SetDestination(player.position);
+                        Debug.Log("Chasing player.");
+                    }                    
+                }
             }
-
-            // ... set the destination of the nav mesh agent to the player.
-            //nav.SetDestination(player.position);
-        }
-        // Otherwise...
-        else
-        {
-            // ... disable the nav mesh agent.
-            //nav.enabled = false;
-        }
-
-
-        if (enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0 && distanceFromPlayer > attackRange)
-        {
-            // ... set the destination of the nav mesh agent to the player.
-            if (nav.enabled && !playerMove.isStealth)
-            {
-                nav.SetDestination(player.position);
-                Debug.Log("Chasing player.");
-            }
-            if (nav.enabled && playerMove.isStealth)
-            {
-                //Debug.Log("Player is out of range and stealth.");
-                //nav.enabled = false;
-                RunAway();
-            }
-        }
-        else if (distanceFromPlayer <= attackRange)
-        {
-            if (playerMove.isStealth)
-            {
-                Debug.Log("Player in range and stealth");
-                RunAway();
-            }
+            //Player in attack range.
             else
             {
-                Debug.Log("Player in range and not stealth");
-                nav.enabled = false;
+                //Is stealth.
+                if (playerMove.isStealth)
+                {
+                    //Debug.Log("Player in range and stealth");
+                    RunAway();
+                }
+
+                //Player not stealth.
+                else
+                {
+                    Attack();
+                    //Debug.Log("Player in range and not stealth");
+                    nav.enabled = false;
+                }
             }
         }
     }
@@ -109,6 +103,7 @@ public class SlimeMovement : MonoBehaviour
         timeLeft -= Time.deltaTime;
         if (timeLeft < 0)
         {
+            if (!nav.enabled) nav.enabled = true;
             Vector3 nextPos;
             nextPos.x = nav.nextPosition.x + Random.Range(-1 * rangeBound, rangeBound);
             nextPos.z = nav.nextPosition.z + Random.Range(-1 * rangeBound, rangeBound);
