@@ -82,6 +82,7 @@ internal class SlimeHealth : MonoBehaviour
 
         slimeMovement.enabled = false;
         //slimeShooting.enabled = false;
+		Destroy(gameObject);
     }
 
     internal void TakeDamage(int damagePerShot, Vector3 point)

@@ -14,6 +14,7 @@ TagManager:
   - Wave6
   - Boss
   - Slime
+  - CurrentWave
   layers:
   - Default
   - TransparentFX
