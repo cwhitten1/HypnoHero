@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class Game : MonoBehaviour {
-    private int scareMeter;
-    private int confidenceMeter;
+    private float scareMeter;
+    private float confidenceMeter;
 
     private Slider confidenceSlider;
     private Slider scareSlider;
@@ -13,7 +13,7 @@ public class Game : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        InitScareAndConfidence(100, 100);
+        InitScareAndConfidence(100, 0);
     }
 	
 	// Update is called once per frame
@@ -40,7 +40,7 @@ public class Game : MonoBehaviour {
     /// </summary>
     /// <param name="slider"></param>
     /// <param name="percentage"></param>
-    void UpdateSlider(Slider slider, int percentage)
+    void UpdateSlider(Slider slider, float percentage)
     {
         float ratio = 0.01f;
         slider.value = percentage * ratio;
@@ -51,14 +51,24 @@ public class Game : MonoBehaviour {
     /// </summary>
     public int GetConfidence()
     {
-        return confidenceMeter;
+        return (int) System.Math.Ceiling(confidenceMeter);
     }
 
     /// <summary>
     ///  Will add an amount to confidence. (Max 100)
     /// </summary>
     /// <param name="amount"></param>
-    public void AddConfidence(int amount)
+    public void AddConfidence(float amount)
+    {
+        confidenceMeter += amount;
+        UpdateSlider(confidenceSlider, confidenceMeter);
+    }
+
+    /// <summary>
+    /// Subtract a POSITIVE number from confidence.
+    /// </summary>
+    /// <param name="amount"></param>
+    public void SubtractConfidence(float amount)
     {
         confidenceMeter -= amount;
         UpdateSlider(confidenceSlider, confidenceMeter);
@@ -69,13 +79,13 @@ public class Game : MonoBehaviour {
     /// </summary>
     public int GetScare()
     {
-        return scareMeter;
+        return (int) System.Math.Ceiling(scareMeter);
     }
 
     /// <summary>
     /// Subtract a POSITIVE number from scare.
     /// </summary>
-    public void SubtractScare(int amount)
+    public void SubtractScare(float amount)
     {
         scareMeter -= amount;
         UpdateSlider(scareSlider, scareMeter);

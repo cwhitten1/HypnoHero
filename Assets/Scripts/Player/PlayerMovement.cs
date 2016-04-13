@@ -12,6 +12,10 @@ public class PlayerMovement : MonoBehaviour
     public bool isStealth = false;
     private float rotationSmoothing = 10f;
 
+    float stealthConfidenceSubtractFactor = 1; /// <summary>
+    /// The amount of confidence subtracted per second when in stealth.
+    /// </summary>
+
 
     Vector3 movement;
     Animation anim;
@@ -65,6 +69,9 @@ public class PlayerMovement : MonoBehaviour
                 //Change Colors
                 isStealth = true;
                 SetStealth(isStealth);
+
+                Game.GetGame().SubtractConfidence(stealthConfidenceSubtractFactor * Time.deltaTime);
+
                 return;
             }
             else
@@ -75,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        
         float h = Input.GetAxisRaw("Horizontal"); //Raw axis returns either -1,0,1
         float v = Input.GetAxisRaw("Vertical");
 
