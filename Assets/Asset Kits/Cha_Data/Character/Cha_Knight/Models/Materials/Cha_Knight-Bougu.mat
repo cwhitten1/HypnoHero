@@ -45,14 +45,14 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _ToonShade
+          name: _ParallaxMap
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _ParallaxMap
+          name: _ToonShade
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -115,6 +115,10 @@ Material:
         second: 0.02
       data:
         first:
+          name: _RimPower
+        second: 8
+      data:
+        first:
           name: _ZWrite
         second: 1
       data:
@@ -145,10 +149,6 @@ Material:
         first:
           name: _Metallic
         second: 0
-      data:
-        first:
-          name: _RimPower
-        second: 8
     m_Colors:
       data:
         first:
