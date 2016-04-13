@@ -22,7 +22,7 @@ public class SlimeMovement : MonoBehaviour
     int damage;                     // How much damage the slime does.
     int attackWaitPeriod;           // How long the slime will wait between attacks.
 
-
+    public bool canMove;            // Used in WaveScript to determine if a wave can move
 
     void Awake()
     {
@@ -35,9 +35,13 @@ public class SlimeMovement : MonoBehaviour
         enemyHealth = GetComponent<SlimeHealth>();
         nav = GetComponent<NavMeshAgent>();
 
+        nav.enabled = false;
+
         canAttack = true;
         damage = 2;
         attackWaitPeriod = 1000;
+
+        canMove = false;
     }
 
 
@@ -47,10 +51,8 @@ public class SlimeMovement : MonoBehaviour
         float distanceFromPlayer = Mathf.Pow(player.position.x - nav.nextPosition.x, 2) + Mathf.Pow(player.position.z - nav.nextPosition.z, 2);
         distanceFromPlayer = Mathf.Sqrt(distanceFromPlayer);
 
-        if (!nav.enabled && distanceFromPlayer > attackRange)
+        if (canMove && !nav.enabled && distanceFromPlayer > attackRange)
             nav.enabled = true;
-
-      
 
         bool playerAlive = playerHealth.currentHealth > 0,
         mobAlive = enemyHealth.currentHealth > 0,
@@ -73,7 +75,7 @@ public class SlimeMovement : MonoBehaviour
                     else
                     {
                         nav.SetDestination(player.position);
-                        Debug.Log("Chasing player.");
+                        //Debug.Log("Chasing player.");
                     }                    
                 }
             }

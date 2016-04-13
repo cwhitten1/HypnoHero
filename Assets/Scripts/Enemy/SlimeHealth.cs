@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 internal class SlimeHealth : MonoBehaviour
 {
-    public int startingHealth = 1000000000; //Say "Hello" to my little friend!
+    public static int startingHealth = 100; //Say "Hello" to my little friend!
     public int currentHealth;
     //public Slider healthSlider;
     public Image damageImage;
@@ -32,7 +32,7 @@ internal class SlimeHealth : MonoBehaviour
         slimeAudio = GetComponent<AudioSource>();
         slimeMovement = GetComponent<SlimeMovement>();
         //slimeShooting = GetComponentInChildren<SlimeShooting>();
-        currentHealth = 100; // set it to a more reasonable value
+        currentHealth = startingHealth; // set it to a more reasonable value
     }
 
     void Update()
@@ -55,6 +55,8 @@ internal class SlimeHealth : MonoBehaviour
 
         currentHealth -= amount;
 
+        if (currentHealth < 0)
+            currentHealth = 0;
         //healthSlider.value = currentHealth;
 
         slimeAudio.Play();
@@ -85,5 +87,11 @@ internal class SlimeHealth : MonoBehaviour
     internal void TakeDamage(int damagePerShot, Vector3 point)
     {
         throw new NotImplementedException();
+    }
+
+    //
+    public int currentHP()
+    {
+        return this.currentHealth;
     }
 }

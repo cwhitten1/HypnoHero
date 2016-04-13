@@ -11,7 +11,7 @@ public class avatar_change : MonoBehaviour {
         Image image_m = GameObject.Find("Avatar").GetComponent<Image>();
         PlayerHealth health = g.GetComponent<PlayerHealth>();
        
-        Debug.Log(health.damaged);
+        //Debug.Log(health.damaged);
        // image_m.sprite = sad;
         if (health.damaged == true)
         {

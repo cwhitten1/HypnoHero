@@ -5,6 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerModel
+  - Stealth
+  - Wave1
+  - Wave2
+  - Wave3
+  - Wave4
+  - Wave5
+  - Wave6
+  - Boss
+  - Slime
   layers:
   - Default
   - TransparentFX
