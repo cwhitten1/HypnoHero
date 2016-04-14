@@ -33,6 +33,7 @@ public class SlimeMovement : MonoBehaviour
         playerMove = player.GetComponent<PlayerMovement>();
         enemyHealth = GetComponent<SlimeHealth>();
 		anim = GetComponent<Animation> ();
+		anim ["Attack"].layer = 1;
         nav = GetComponent<NavMeshAgent>();
 
         nav.enabled = false;
