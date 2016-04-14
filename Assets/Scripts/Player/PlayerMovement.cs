@@ -32,6 +32,10 @@ public class PlayerMovement : MonoBehaviour
     int floorMask;
     float camRayLength = 100f;
 
+    int oldDamagePerHit; /// <summary>
+    /// The damage to reset to when the player leaves stealth.
+    /// </summary>
+
     void Awake()
     {
         floorMask = LayerMask.GetMask("Floor");
@@ -41,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerModel = GameObject.FindGameObjectWithTag("PlayerModel").GetComponent<SkinnedMeshRenderer>();
         stealthObjects = GameObject.FindGameObjectsWithTag("Stealth");
+
+        oldDamagePerHit = player.GetComponent<PlayerAttacking>().damagePerHit;
     }
 
     void FixedUpdate()
@@ -78,11 +84,16 @@ public class PlayerMovement : MonoBehaviour
                 SetStealth(isStealth);
 
                 Game.GetGame().SubtractConfidence(stealthConfidenceSubtractFactor * Time.deltaTime);
+                
+                this.GetComponent<PlayerAttacking>().damagePerHit = 0;
+
                 return;
             }
             else
             {
                 //Debug.Log("Player isn't stealth!");
+                this.GetComponent<PlayerAttacking>().damagePerHit = oldDamagePerHit;
+
                 isStealth = false;
                 SetStealth(isStealth);
             }
