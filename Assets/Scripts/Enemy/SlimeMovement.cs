@@ -11,6 +11,8 @@ public class SlimeMovement : MonoBehaviour
     PlayerHealth playerHealth;      // Reference to the player's health.
     SlimeHealth enemyHealth;        // Reference to this enemy's health.
     NavMeshAgent nav;               // Reference to the nav mesh agent.
+	GameObject stealthObject;
+
 
     PlayerMovement playerMove;
     public float attackRange = 3f;
@@ -64,14 +66,16 @@ public class SlimeMovement : MonoBehaviour
                 {
                     //Player stealth.
                     if (playerMove.isStealth) {
-                        //nav.enabled = false;
+						stealthObject = GameObject.FindGameObjectWithTag ("Player")
+							.GetComponent<PlayerMovement> ()
+							.stealthObject;
                         RunAway();
                     }
                     //Player not stealth.
                     else
-                    {
+					{
+						//Debug.Log("Chasing player.");
                         nav.SetDestination(player.position);
-                        //Debug.Log("Chasing player.");
                     }                    
                 }
             }
@@ -102,12 +106,19 @@ public class SlimeMovement : MonoBehaviour
         if (timeLeft < 0)
         {
             if (!nav.enabled) nav.enabled = true;
+			bool isInBounds = true;
             Vector3 nextPos;
-            nextPos.x = nav.nextPosition.x + Random.Range(-1 * rangeBound, rangeBound);
-            nextPos.z = nav.nextPosition.z + Random.Range(-1 * rangeBound, rangeBound);
-            nextPos.y = nav.nextPosition.y;
-            nav.SetDestination(nextPos);
-            timeLeft = timerInterval;
+			while (isInBounds) {
+				nextPos.x = nav.nextPosition.x + Random.Range(-1 * rangeBound, rangeBound);
+				nextPos.z = nav.nextPosition.z + Random.Range(-1 * rangeBound, rangeBound);
+				nextPos.y = nav.nextPosition.y;
+
+				timeLeft = timerInterval;
+
+				isInBounds =  stealthObject.GetComponent<BoxCollider> ().bounds.Contains(nextPos);
+				if (!isInBounds)
+					nav.SetDestination(nextPos);
+			}
         }
         
     }

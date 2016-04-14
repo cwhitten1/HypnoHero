@@ -4,7 +4,6 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 6f;
-    public float stealthDistance = 5f;
 
     public Color normColor = new Color(64f, 64f, 64f, 255f);
     public Color stealthColor = new Color(208f, 208f, 208f, 255f);
@@ -25,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     SkinnedMeshRenderer playerModel;
 
     GameObject[] stealthObjects;
+	public GameObject stealthObject;
 
     int floorMask;
     float camRayLength = 100f;
@@ -56,27 +56,24 @@ public class PlayerMovement : MonoBehaviour
     {
         foreach (var obj in stealthObjects)
         {
-            float objX = obj.transform.position.x,
-            objZ = obj.transform.position.z,
-
-            distanceFromPlayer = Mathf.Pow(player.position.x - objX, 2) + Mathf.Pow(player.position.z - objZ, 2);
-            distanceFromPlayer = Mathf.Sqrt(distanceFromPlayer);
-
-            if (distanceFromPlayer <= stealthDistance)
+            
+			bool objCollision = obj.GetComponent<BoxCollider> ().bounds.Contains(player.transform.position);
+			Debug.Log (obj.name);
+            if (objCollision)
             {
-                //Debug.Log("Player is stealth!");
-
-                //Change Colors
+				Debug.Log (player.transform.position.x + "," + player.transform.position.y + "," + player.transform.position.z);
                 isStealth = true;
                 SetStealth(isStealth);
-
-                Game.GetGame().SubtractConfidence(stealthConfidenceSubtractFactor * Time.deltaTime);
+				stealthObject = obj;
+                Game.GetGame()
+					.SubtractConfidence(
+						stealthConfidenceSubtractFactor * Time.deltaTime
+					);
 
                 return;
             }
             else
             {
-                //Debug.Log("Player isn't stealth!");
                 isStealth = false;
                 SetStealth(isStealth);
             }
