@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System;
 
 public class Game : MonoBehaviour {
     private float scareMeter;
@@ -61,9 +62,11 @@ public class Game : MonoBehaviour {
     public void AddConfidence(float amount)
     {
         confidenceMeter += amount;
+        if (confidenceMeter > 100)
+            confidenceMeter = 100;
         UpdateSlider(confidenceSlider, confidenceMeter);
     }
-
+    
     /// <summary>
     /// Subtract a POSITIVE number from confidence.
     /// </summary>
@@ -71,6 +74,8 @@ public class Game : MonoBehaviour {
     public void SubtractConfidence(float amount)
     {
         confidenceMeter -= amount;
+        if (confidenceMeter < 0)
+            confidenceMeter = 0;
         UpdateSlider(confidenceSlider, confidenceMeter);
     }
 
@@ -82,12 +87,22 @@ public class Game : MonoBehaviour {
         return (int) System.Math.Ceiling(scareMeter);
     }
 
+    public void AddScare(float amount)
+    {
+        scareMeter += amount;
+        if (scareMeter > 100)
+            scareMeter = 100;
+        UpdateSlider(scareSlider, scareMeter);
+    }
+
     /// <summary>
     /// Subtract a POSITIVE number from scare.
     /// </summary>
     public void SubtractScare(float amount)
     {
         scareMeter -= amount;
+        if (scareMeter < 0)
+            scareMeter = 0;
         UpdateSlider(scareSlider, scareMeter);
     }
 
