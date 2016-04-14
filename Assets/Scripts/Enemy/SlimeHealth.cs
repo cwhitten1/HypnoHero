@@ -35,6 +35,11 @@ internal class SlimeHealth : MonoBehaviour
 
     void Update()
     {
+        // Show health on health bar
+        float percentage = currentHealth;
+        float ratio = 0.01f;
+        GetComponentInChildren<Slider>().value = percentage * ratio;
+
         if (damaged)
         {
            // damageImage.color = flashColour;
