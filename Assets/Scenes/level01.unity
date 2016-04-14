@@ -23474,6 +23474,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1067649047}
   - 114: {fileID: 1067649045}
+  - 114: {fileID: 1067649046}
   m_Layer: 0
   m_Name: Level 01 Environment
   m_TagString: Untagged
@@ -31635,7 +31636,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
