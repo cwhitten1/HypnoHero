@@ -13,9 +13,12 @@ public class PlayerMovement : MonoBehaviour
     private float rotationSmoothing = 10f;
 
     float stealthConfidenceSubtractFactor = 1; /// <summary>
-    /// The amount of confidence subtracted per second when in stealth.
-    /// </summary>
+                                               /// The amount of confidence subtracted per second when in stealth.
+                                               /// </summary>
 
+    float fullConfidenceHealthAddFactor = 0.5f; /// <summary>
+                                               /// The amount of heath add per second when confidence is 100.
+                                               /// </summary>
 
     Vector3 movement;
     Animation anim;
@@ -54,6 +57,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (Game.GetGame().GetConfidence() == 100)
+            Game.GetGame().AddScare(Time.deltaTime * fullConfidenceHealthAddFactor);
+                
+
         foreach (var obj in stealthObjects)
         {
             float objX = obj.transform.position.x,
@@ -71,7 +78,6 @@ public class PlayerMovement : MonoBehaviour
                 SetStealth(isStealth);
 
                 Game.GetGame().SubtractConfidence(stealthConfidenceSubtractFactor * Time.deltaTime);
-
                 return;
             }
             else
