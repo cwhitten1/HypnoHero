@@ -11,6 +11,7 @@ public class SlimeMovement : MonoBehaviour
     PlayerHealth playerHealth;      // Reference to the player's health.
     SlimeHealth enemyHealth;        // Reference to this enemy's health.
     NavMeshAgent nav;               // Reference to the nav mesh agent.
+	Animation anim; 				// Reference to this enemy's animations
 
     PlayerMovement playerMove;
     public float attackRange = 3f;
@@ -31,6 +32,7 @@ public class SlimeMovement : MonoBehaviour
         playerHealth = player.GetComponent<PlayerHealth>();
         playerMove = player.GetComponent<PlayerMovement>();
         enemyHealth = GetComponent<SlimeHealth>();
+		anim = GetComponent<Animation> ();
         nav = GetComponent<NavMeshAgent>();
 
         nav.enabled = false;
@@ -120,6 +122,7 @@ public class SlimeMovement : MonoBehaviour
     {
         if (canAttack)
         {
+			anim.CrossFade ("Attack");
             player.GetComponent<PlayerHealth>().TakeDamage(damage);
             AttackWait();
         }

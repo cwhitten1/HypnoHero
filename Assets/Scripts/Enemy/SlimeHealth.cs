@@ -15,7 +15,6 @@ internal class SlimeHealth : MonoBehaviour
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
 
-    Animator anim;
     AudioSource slimeAudio;
     SlimeMovement slimeMovement;
     //SlimeShooting slimeShooting;
@@ -28,7 +27,6 @@ internal class SlimeHealth : MonoBehaviour
     {
         game = Game.GetGame();
 
-        anim = GetComponent<Animator>();
         slimeAudio = GetComponent<AudioSource>();
         slimeMovement = GetComponent<SlimeMovement>();
         //slimeShooting = GetComponentInChildren<SlimeShooting>();
@@ -76,8 +74,6 @@ internal class SlimeHealth : MonoBehaviour
         game.AddConfidence(15);
 
         //slimeShooting.DisableEffects();
-
-        anim.SetTrigger("Die");
 
         slimeAudio.clip = deathClip;
         slimeAudio.Play();
