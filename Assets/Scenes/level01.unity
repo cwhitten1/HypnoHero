@@ -24680,7 +24680,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1067649047}
-  - 114: {fileID: 1067649046}
   - 114: {fileID: 1067649045}
   m_Layer: 0
   m_Name: Level 01 Environment
@@ -24696,36 +24695,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1067649044}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8097d88c6fd79b4e8599b0720de8f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1067649046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11435940, guid: daabafbd6acd6994d885a612510ea80c,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1067649044}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17ab16fd4cf6ae64aa6f183318e8d292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wave_one: []
-  wave_two: []
-  wave_three: []
-  wave_four: []
-  wave_five: []
-  wave_six: []
-  boss: {fileID: 146786, guid: 91ed46b2a2cb996459acef590fe15124, type: 2}
-  wave_one_hp: 0
-  wave_two_hp: 0
-  wave_three_hp: 0
-  wave_four_hp: 0
-  wave_five_hp: 0
-  wave_six_hp: 0
 --- !u!4 &1067649047
 Transform:
   m_ObjectHideFlags: 0
@@ -33947,6 +33921,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
