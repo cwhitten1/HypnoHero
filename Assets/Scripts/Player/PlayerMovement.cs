@@ -11,11 +11,15 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isStealth = false;
     private float rotationSmoothing = 10f;
+    
 
     public float stealthConfidenceSubtractFactor = 2; /// <summary>
     /// The amount of confidence subtracted per second when in stealth.
     /// </summary>
 
+    float fullConfidenceHealthAddFactor = 0.5f; /// <summary>
+                                               /// The amount of heath add per second when confidence is 100.
+                                               /// </summary>
 
     Vector3 movement;
     Animation anim;
@@ -29,6 +33,10 @@ public class PlayerMovement : MonoBehaviour
     int floorMask;
     float camRayLength = 100f;
 
+    int oldDamagePerHit; /// <summary>
+    /// The damage to reset to when the player leaves stealth.
+    /// </summary>
+
     void Awake()
     {
         floorMask = LayerMask.GetMask("Floor");
@@ -38,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerModel = GameObject.FindGameObjectWithTag("PlayerModel").GetComponent<SkinnedMeshRenderer>();
         stealthObjects = GameObject.FindGameObjectsWithTag("Stealth");
+
+        oldDamagePerHit = player.GetComponent<PlayerAttacking>().damagePerHit;
     }
 
     void FixedUpdate()
@@ -54,6 +64,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (Game.GetGame().GetConfidence() == 100)
+            Game.GetGame().AddScare(Time.deltaTime * fullConfidenceHealthAddFactor);
+                
+
         foreach (var obj in stealthObjects)
         {
             float objX = obj.transform.position.x,
@@ -71,12 +85,16 @@ public class PlayerMovement : MonoBehaviour
                 SetStealth(isStealth);
 
                 Game.GetGame().SubtractConfidence(stealthConfidenceSubtractFactor * Time.deltaTime);
+                
+                this.GetComponent<PlayerAttacking>().damagePerHit = 0;
 
                 return;
             }
             else
             {
                 //Debug.Log("Player isn't stealth!");
+                this.GetComponent<PlayerAttacking>().damagePerHit = oldDamagePerHit;
+
                 isStealth = false;
                 SetStealth(isStealth);
             }
