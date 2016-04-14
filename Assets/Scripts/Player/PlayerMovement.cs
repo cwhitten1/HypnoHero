@@ -11,10 +11,14 @@ public class PlayerMovement : MonoBehaviour
     public bool isStealth = false;
     private float rotationSmoothing = 10f;
 
-    public float stealthConfidenceSubtractFactor = 2; /// <summary>
-    /// The amount of confidence subtracted per second when in stealth.
-    /// </summary>
 
+    public float stealthConfidenceSubtractFactor = 2; /// <summary>
+                                                      /// The amount of confidence subtracted per second when in stealth.
+                                                      /// </summary>
+
+    float fullConfidenceHealthAddFactor = 0.5f; /// <summary>
+                                                /// The amount of heath add per second when confidence is 100.
+                                                /// </summary>
 
     Vector3 movement;
     Animation anim;
@@ -24,10 +28,14 @@ public class PlayerMovement : MonoBehaviour
     SkinnedMeshRenderer playerModel;
 
     GameObject[] stealthObjects;
-	public GameObject stealthObject;
+    public GameObject stealthObject;
 
     int floorMask;
     float camRayLength = 100f;
+
+    int oldDamagePerHit; /// <summary>
+                         /// The damage to reset to when the player leaves stealth.
+                         /// </summary>
 
     void Awake()
     {
@@ -38,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerModel = GameObject.FindGameObjectWithTag("PlayerModel").GetComponent<SkinnedMeshRenderer>();
         stealthObjects = GameObject.FindGameObjectsWithTag("Stealth");
+
+        oldDamagePerHit = player.GetComponent<PlayerAttacking>().damagePerHit;
     }
 
     void FixedUpdate()
@@ -54,32 +64,47 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (Game.GetGame().GetConfidence() == 100)
+            Game.GetGame().AddScare(Time.deltaTime * fullConfidenceHealthAddFactor);
+
+
         foreach (var obj in stealthObjects)
         {
-            
-			bool objCollision = obj.GetComponent<BoxCollider> ().bounds.Contains(player.transform.position);
-			Debug.Log (obj.name);
+
+            bool objCollision = obj.GetComponent<BoxCollider>().bounds.Contains(player.transform.position);
+            Debug.Log(obj.name);
             if (objCollision)
             {
-				Debug.Log (player.transform.position.x + "," + player.transform.position.y + "," + player.transform.position.z);
+                Debug.Log(player.transform.position.x + "," + player.transform.position.y + "," + player.transform.position.z);
                 isStealth = true;
                 SetStealth(isStealth);
-				stealthObject = obj;
+
+                stealthObject = obj;
                 Game.GetGame()
-					.SubtractConfidence(
-						stealthConfidenceSubtractFactor * Time.deltaTime
-					);
+                    .SubtractConfidence(
+                        stealthConfidenceSubtractFactor * Time.deltaTime
+                    );
+
+
+                Game.GetGame().SubtractConfidence(stealthConfidenceSubtractFactor * Time.deltaTime);
+
+                this.GetComponent<PlayerAttacking>().damagePerHit = 0;
+
 
                 return;
             }
             else
             {
+                //Debug.Log("Player isn't stealth!");
+                this.GetComponent<PlayerAttacking>().damagePerHit = oldDamagePerHit;
+
+
                 isStealth = false;
                 SetStealth(isStealth);
             }
         }
 
-        
+
         float h = Input.GetAxisRaw("Horizontal"); //Raw axis returns either -1,0,1
         float v = Input.GetAxisRaw("Vertical");
 

@@ -73,7 +73,7 @@ internal class SlimeHealth : MonoBehaviour
         
         isDead = true;
 
-        game.AddConfidence(15);
+        game.AddConfidence(4);
 
         //slimeShooting.DisableEffects();
 
