@@ -14206,7 +14206,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 94.21928, y: 87.79683, z: -78.85766}
   m_Center: {x: 0, y: 50, z: 60}
---- !u!114 &655034073
+--- !u!114 &655034074
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
