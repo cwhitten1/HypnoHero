@@ -38,7 +38,7 @@ public class SlimeMovement : MonoBehaviour
 
         nav.enabled = false;
 
-        canAttack = true;
+		EnableAttacking ();
         damage = 2;
         attackWaitPeriod = 1000;
     }
@@ -139,7 +139,7 @@ public class SlimeMovement : MonoBehaviour
     /// </summary>
     void AttackWait()
     {
-        canAttack = false;
+		DisableAttacking ();
 
         Timer t = new Timer();
         t.Elapsed += new ElapsedEventHandler(AttackWaitFinished);
@@ -157,4 +157,11 @@ public class SlimeMovement : MonoBehaviour
         ((Timer)sender).Dispose();
     }
 
+	public void DisableAttacking(){
+		canAttack = false;
+	}
+
+	public void EnableAttacking(){
+		canAttack = true;
+	}
 }

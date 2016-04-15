@@ -486,6 +486,7 @@ MonoBehaviour:
   damageImage: {fileID: 0}
   deathClip: {fileID: 0}
   flashSpeed: 5
+  sinkSpeed: 3
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
 --- !u!114 &11495228
 MonoBehaviour:
@@ -499,7 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 3
-  timerInterval: 1.5
+  timerInterval: 0.7
   rangeBound: 10
 --- !u!114 &11497034
 MonoBehaviour:
