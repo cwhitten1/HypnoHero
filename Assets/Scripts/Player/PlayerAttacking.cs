@@ -18,7 +18,7 @@ public class PlayerAttacking : MonoBehaviour
 		attackableObject = null;
 
 		anim = GetComponent<Animation> ();
-		anim ["Attack"].layer = 1;
+		anim ["Attack"].layer = 2;
 		anim ["Attack"].speed = anim ["Attack"].length / timeBetweenAttacks;
 	}
 
@@ -40,11 +40,11 @@ public class PlayerAttacking : MonoBehaviour
 		timer = 0f;
 
 		//Start attack animation here
-		//anim.CrossFade("Attack");
+		anim.Stop (); 
 		anim.Play ("Attack");
 
 		if(attackableObject != null){
-			Invoke("DamageAttackableObject", timeBetweenAttacks);
+			Invoke("DamageAttackableObject", timeBetweenAttacks/2);
         }
 	}
 
