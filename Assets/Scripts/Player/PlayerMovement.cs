@@ -78,7 +78,6 @@ public class PlayerMovement : MonoBehaviour
 			bool objCollision = obj.GetComponent<StealthObjects> ().isStealth;
             if (objCollision)
             {
-                Debug.Log(player.transform.position.x + "," + player.transform.position.y + "," + player.transform.position.z);
                 isStealth = true;
                 SetStealth(isStealth);
 
