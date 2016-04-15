@@ -6883,6 +6883,8 @@ GameObject:
   - 33: {fileID: 302655430}
   - 23: {fileID: 302655429}
   - 95: {fileID: 302655428}
+  - 65: {fileID: 302655431}
+  - 114: {fileID: 302655432}
   m_Layer: 0
   m_Name: Table_Big
   m_TagString: Stealth
@@ -6955,6 +6957,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 302655426}
   m_Mesh: {fileID: 4300000, guid: d1727fb9ffedcdd4fa348b38172dd597, type: 3}
+--- !u!65 &302655431
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 302655426}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.49472815, y: 0.96824116, z: 0.19213027}
+  m_Center: {x: -0.00000010430813, y: -9.249128e-16, z: -0.000000018626453}
+--- !u!114 &302655432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 302655426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c909cd0f4399145b0bf22a9589b42e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isStealth: 0
 --- !u!1001 &304179169
 Prefab:
   m_ObjectHideFlags: 0
@@ -14168,7 +14194,6 @@ GameObject:
   - 114: {fileID: 655034068}
   - 114: {fileID: 655034075}
   - 114: {fileID: 655034073}
-  - 114: {fileID: 655034074}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -14188,11 +14213,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  stealthDistance: 5
   normColor: {r: 0.8161765, g: 0.8161765, b: 0.8161765, a: 1}
   stealthColor: {r: 0.25, g: 0.25, b: 0.25, a: 1}
   isStealth: 1
   stealthConfidenceSubtractFactor: 2
+  stealthObject: {fileID: 0}
 --- !u!4 &655034069
 Transform:
   m_ObjectHideFlags: 0
@@ -14265,19 +14290,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagePerHit: 20
-  timeBetweenAttacks: 0.25
---- !u!114 &655034074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 655034067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a19cb86f2c59f74bae919c34ab3bc66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damagePerHit: 50
   timeBetweenAttacks: 0.25
 --- !u!114 &655034075
 MonoBehaviour:
@@ -28973,6 +28985,8 @@ GameObject:
   - 33: {fileID: 1330517034}
   - 23: {fileID: 1330517033}
   - 95: {fileID: 1330517032}
+  - 65: {fileID: 1330517035}
+  - 114: {fileID: 1330517036}
   m_Layer: 0
   m_Name: Table_Small
   m_TagString: Stealth
@@ -29045,6 +29059,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1330517030}
   m_Mesh: {fileID: 4300000, guid: 6fa081583627a1641a9bca477ba8d408, type: 3}
+--- !u!65 &1330517035
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1330517030}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20999633, y: 0.8466618, z: 0.19213025}
+  m_Center: {x: -0.00000019690074, y: 0.0000000035541035, z: -0.08944196}
+--- !u!114 &1330517036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1330517030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c909cd0f4399145b0bf22a9589b42e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isStealth: 0
 --- !u!1 &1331567381
 GameObject:
   m_ObjectHideFlags: 0
@@ -32053,7 +32091,7 @@ GameObject:
   - 111: {fileID: 1462543194}
   m_Layer: 0
   m_Name: Chair7
-  m_TagString: Stealth
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -33475,6 +33513,8 @@ GameObject:
   - 4: {fileID: 1527338682}
   - 33: {fileID: 1527338684}
   - 23: {fileID: 1527338683}
+  - 65: {fileID: 1527338685}
+  - 114: {fileID: 1527338686}
   m_Layer: 0
   m_Name: chair7
   m_TagString: Stealth
@@ -33529,6 +33569,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1527338681}
   m_Mesh: {fileID: 4300000, guid: 6c469840da694a9429b937364c32d097, type: 3}
+--- !u!65 &1527338685
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1527338681}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 34.539093, y: 35, z: 50}
+  m_Center: {x: -0.035307877, y: 2.0315478, z: 25.829353}
+--- !u!114 &1527338686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1527338681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c909cd0f4399145b0bf22a9589b42e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isStealth: 0
 --- !u!1 &1528333883
 GameObject:
   m_ObjectHideFlags: 0
@@ -41741,6 +41805,8 @@ GameObject:
   - 4: {fileID: 1914241250}
   - 33: {fileID: 1914241252}
   - 23: {fileID: 1914241251}
+  - 65: {fileID: 1914241253}
+  - 114: {fileID: 1914241254}
   m_Layer: 0
   m_Name: chair7
   m_TagString: Stealth
@@ -41795,6 +41861,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1914241249}
   m_Mesh: {fileID: 4300000, guid: 6c469840da694a9429b937364c32d097, type: 3}
+--- !u!65 &1914241253
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1914241249}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 34.539093, y: 35, z: 50}
+  m_Center: {x: -0.035323136, y: 2.0315628, z: 25.829353}
+--- !u!114 &1914241254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1914241249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c909cd0f4399145b0bf22a9589b42e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isStealth: 0
 --- !u!1 &1919775591
 GameObject:
   m_ObjectHideFlags: 0

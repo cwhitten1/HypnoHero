@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         foreach (var obj in stealthObjects)
         {
 
-            bool objCollision = obj.GetComponent<BoxCollider>().bounds.Contains(player.transform.position);
+			bool objCollision = obj.GetComponent<StealthObjects> ().isStealth;
             Debug.Log(obj.name);
             if (objCollision)
             {
