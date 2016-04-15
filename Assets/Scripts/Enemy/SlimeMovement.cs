@@ -123,11 +123,16 @@ public class SlimeMovement : MonoBehaviour
     {
         if (canAttack)
         {
+			float animationDuration = anim ["Attack"].length;
 			anim.CrossFade ("Attack");
-            player.GetComponent<PlayerHealth>().TakeDamage(damage);
+			Invoke ("DamagePlayer", animationDuration);
             AttackWait();
         }
     }
+
+	void DamagePlayer(){
+		player.GetComponent<PlayerHealth>().TakeDamage(damage);
+	}
 
     /// <summary>
     /// After attacking, the slime must wait temporarily before attacking again.
