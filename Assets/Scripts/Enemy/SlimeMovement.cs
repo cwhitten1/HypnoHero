@@ -38,7 +38,7 @@ public class SlimeMovement : MonoBehaviour
 
         nav.enabled = false;
 
-        canAttack = true;
+		EnableAttacking ();
         damage = 2;
         attackWaitPeriod = 1000;
     }
@@ -123,18 +123,23 @@ public class SlimeMovement : MonoBehaviour
     {
         if (canAttack)
         {
+			float animationDuration = anim ["Attack"].length;
 			anim.CrossFade ("Attack");
-            player.GetComponent<PlayerHealth>().TakeDamage(damage);
+			Invoke ("DamagePlayer", animationDuration/2);
             AttackWait();
         }
     }
+
+	void DamagePlayer(){
+		player.GetComponent<PlayerHealth>().TakeDamage(damage);
+	}
 
     /// <summary>
     /// After attacking, the slime must wait temporarily before attacking again.
     /// </summary>
     void AttackWait()
     {
-        canAttack = false;
+		DisableAttacking ();
 
         Timer t = new Timer();
         t.Elapsed += new ElapsedEventHandler(AttackWaitFinished);
@@ -152,4 +157,11 @@ public class SlimeMovement : MonoBehaviour
         ((Timer)sender).Dispose();
     }
 
+	public void DisableAttacking(){
+		canAttack = false;
+	}
+
+	public void EnableAttacking(){
+		canAttack = true;
+	}
 }

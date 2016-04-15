@@ -14245,7 +14245,6 @@ GameObject:
   - 114: {fileID: 655034068}
   - 114: {fileID: 655034075}
   - 114: {fileID: 655034073}
-  - 114: {fileID: 655034074}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -14330,19 +14329,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 94.21928, y: 87.79683, z: -78.85766}
   m_Center: {x: 0, y: 50, z: 60}
---- !u!114 &655034073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 655034067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a19cb86f2c59f74bae919c34ab3bc66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damagePerHit: 20
-  timeBetweenAttacks: 0.25
 --- !u!114 &655034074
 MonoBehaviour:
   m_ObjectHideFlags: 0
