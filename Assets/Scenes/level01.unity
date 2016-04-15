@@ -36868,10 +36868,6 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11480578, guid: 46b31409c0e40db4db8b4ec18f03a0ae, type: 2}
-      propertyPath: sinkSpeed
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 46b31409c0e40db4db8b4ec18f03a0ae, type: 2}
   m_IsPrefabParent: 0
