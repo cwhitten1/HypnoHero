@@ -185,7 +185,7 @@ public class PlayerMovement : MonoBehaviour
             if (game.GetScare()<100)
             {
                 game.AddScare(10);
-                other.gameObject.SetActive(false);
+				Destroy (other.gameObject);
             }
 
                 

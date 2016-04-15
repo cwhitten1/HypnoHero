@@ -37,11 +37,11 @@ public class MediKit_Spawn : MonoBehaviour {
 
         if (medikit.Length == 0)
         {
-            //Debug.LogWarning ("Wave is clear");
+            Debug.LogWarning ("Wave is clear");
             return true;
         }
         else {
-            //Debug.LogWarning ("Wave is not clear: " + waveEnemies.Length + waveEnemies[0].name);
+            Debug.LogWarning ("Wave is not clear: " + medikit.Length + medikit[0].name);
             return false;
         }
     }
