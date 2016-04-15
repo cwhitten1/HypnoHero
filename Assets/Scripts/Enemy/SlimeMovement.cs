@@ -125,7 +125,7 @@ public class SlimeMovement : MonoBehaviour
         {
 			float animationDuration = anim ["Attack"].length;
 			anim.CrossFade ("Attack");
-			Invoke ("DamagePlayer", animationDuration);
+			Invoke ("DamagePlayer", animationDuration/2);
             AttackWait();
         }
     }
