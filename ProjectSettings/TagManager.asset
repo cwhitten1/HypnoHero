@@ -16,6 +16,7 @@ TagManager:
   - Slime
   - CurrentWave
   - Environment
+  - MediKit
   layers:
   - Default
   - TransparentFX

@@ -14293,8 +14293,12 @@ MonoBehaviour:
   normColor: {r: 0.8161765, g: 0.8161765, b: 0.8161765, a: 1}
   stealthColor: {r: 0.25, g: 0.25, b: 0.25, a: 1}
   isStealth: 1
+<<<<<<< HEAD
+  stealthConfidenceSubtractFactor: 2
   stealthObject: {fileID: 0}
+=======
   stealthConfidenceSubtractFactor: 1
+>>>>>>> master
 --- !u!4 &655034069
 Transform:
   m_ObjectHideFlags: 0

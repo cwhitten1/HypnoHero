@@ -24,10 +24,13 @@ public class PlayerAttacking : MonoBehaviour
 		attackableObject = null;
 
 		anim = GetComponent<Animation> ();
-		anim ["Attack"].layer = 1;
+		anim ["Attack"].layer = 2;
+		anim ["Attack"].speed = anim ["Attack"].length / timeBetweenAttacks;
+
 
         confidenceMultiplier = 3;
         originalDamagePerHit = damagePerHit;
+
 	}
 
 
@@ -52,15 +55,17 @@ public class PlayerAttacking : MonoBehaviour
 		timer = 0f;
 
 		//Start attack animation here
-		anim.CrossFade("Attack");
-        
-		if(attackableObject != null){
-            //attackableObject.GetComponent<SlimeHealth>().currentHealth -= 400000000;
-            attackableObject.GetComponent<SlimeHealth>().TakeDamage (damagePerHit);
-            
-            //GameSystem.RestartLevel();
+		anim.Stop (); 
+		anim.Play ("Attack");
 
+		if(attackableObject != null){
+			Invoke("DamageAttackableObject", timeBetweenAttacks/2);
         }
+	}
+
+	void DamageAttackableObject()
+	{
+		attackableObject.GetComponent<SlimeHealth>().TakeDamage (damagePerHit);
 	}
 
 	void OnTriggerEnter(Collider other){
