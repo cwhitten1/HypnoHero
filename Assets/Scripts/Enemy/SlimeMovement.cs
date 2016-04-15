@@ -11,12 +11,15 @@ public class SlimeMovement : MonoBehaviour
     PlayerHealth playerHealth;      // Reference to the player's health.
     SlimeHealth enemyHealth;        // Reference to this enemy's health.
     NavMeshAgent nav;               // Reference to the nav mesh agent.
-	GameObject stealthObject;
-
-	Animation anim; 				// Reference to this enemy's animations
+    GameObject stealthObject;
+    GameObject environment;
+    Animation anim; 				// Reference to this enemy's animations
 
     PlayerMovement playerMove;
-    public float attackRange = 3f;
+    private const float minAttackRange = 3f;
+
+    private float attackRange;
+    public float rangeAdjustment = -.5f;
     public float timerInterval = 1.5f;
     public float rangeBound = 10f;
     float timeLeft = 0f;
@@ -30,12 +33,13 @@ public class SlimeMovement : MonoBehaviour
         game = Game.GetGame();
 
         // Set up the references.
+        environment = GameObject.FindGameObjectWithTag("Environment");
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerHealth = player.GetComponent<PlayerHealth>();
         playerMove = player.GetComponent<PlayerMovement>();
         enemyHealth = GetComponent<SlimeHealth>();
-		anim = GetComponent<Animation> ();
-		anim ["Attack"].layer = 1;
+        anim = GetComponent<Animation>();
+        anim["Attack"].layer = 1;
         nav = GetComponent<NavMeshAgent>();
 
         nav.enabled = false;
@@ -48,7 +52,10 @@ public class SlimeMovement : MonoBehaviour
 
     void Update()
     {
-        // If the enemy and the player have health left...
+        float slimeScaleFactor = environment.GetComponent<SlimeScaling>().scaleFactor;
+        attackRange = minAttackRange * slimeScaleFactor + rangeAdjustment;
+        Debug.Log("Setting new attack range: " + attackRange);
+
         float distanceFromPlayer = Mathf.Pow(player.position.x - nav.nextPosition.x, 2) + Mathf.Pow(player.position.z - nav.nextPosition.z, 2);
         distanceFromPlayer = Mathf.Sqrt(distanceFromPlayer);
 
@@ -68,18 +75,19 @@ public class SlimeMovement : MonoBehaviour
                 if (nav.enabled)
                 {
                     //Player stealth.
-                    if (playerMove.isStealth) {
-						stealthObject = GameObject.FindGameObjectWithTag ("Player")
-							.GetComponent<PlayerMovement> ()
-							.stealthObject;
+                    if (playerMove.isStealth)
+                    {
+                        stealthObject = GameObject.FindGameObjectWithTag("Player")
+                            .GetComponent<PlayerMovement>()
+                            .stealthObject;
                         RunAway();
                     }
                     //Player not stealth.
                     else
-					{
-						//Debug.Log("Chasing player.");
+                    {
+                        //Debug.Log("Chasing player.");
                         nav.SetDestination(player.position);
-                    }                    
+                    }
                 }
             }
             //Player in attack range.
@@ -109,21 +117,22 @@ public class SlimeMovement : MonoBehaviour
         if (timeLeft < 0)
         {
             if (!nav.enabled) nav.enabled = true;
-			bool isInBounds = true;
+            bool isInBounds = true;
             Vector3 nextPos;
-			while (isInBounds) {
-				nextPos.x = nav.nextPosition.x + Random.Range(-1 * rangeBound, rangeBound);
-				nextPos.z = nav.nextPosition.z + Random.Range(-1 * rangeBound, rangeBound);
-				nextPos.y = nav.nextPosition.y;
+            while (isInBounds)
+            {
+                nextPos.x = nav.nextPosition.x + Random.Range(-1 * rangeBound, rangeBound);
+                nextPos.z = nav.nextPosition.z + Random.Range(-1 * rangeBound, rangeBound);
+                nextPos.y = nav.nextPosition.y;
 
-				timeLeft = timerInterval;
+                timeLeft = timerInterval;
 
-				isInBounds =  stealthObject.GetComponent<BoxCollider> ().bounds.Contains(nextPos);
-				if (!isInBounds)
-					nav.SetDestination(nextPos);
-			}
+                isInBounds = stealthObject.GetComponent<BoxCollider>().bounds.Contains(nextPos);
+                if (!isInBounds)
+                    nav.SetDestination(nextPos);
+            }
         }
-        
+
     }
     /// <summary>
     /// This triggers the slime to attack the character.
@@ -134,7 +143,7 @@ public class SlimeMovement : MonoBehaviour
     {
         if (canAttack)
         {
-			anim.CrossFade ("Attack");
+            anim.CrossFade("Attack");
             player.GetComponent<PlayerHealth>().TakeDamage(damage);
             AttackWait();
         }

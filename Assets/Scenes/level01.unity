@@ -14148,6 +14148,7 @@ GameObject:
   - 114: {fileID: 655034068}
   - 114: {fileID: 655034075}
   - 114: {fileID: 655034073}
+  - 114: {fileID: 655034074}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -23456,7 +23457,7 @@ GameObject:
   - 114: {fileID: 1067649046}
   m_Layer: 0
   m_Name: Level 01 Environment
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23473,6 +23474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8097d88c6fd79b4e8599b0720de8f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scaleFactor: 0
 --- !u!114 &1067649046
 MonoBehaviour:
   m_ObjectHideFlags: 0
