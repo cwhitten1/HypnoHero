@@ -106,6 +106,8 @@ public class Game : MonoBehaviour {
         UpdateSlider(scareSlider, scareMeter);
     }
 
+   
+
     public void RestartLevel()
     {
         SceneManager.LoadScene(0);

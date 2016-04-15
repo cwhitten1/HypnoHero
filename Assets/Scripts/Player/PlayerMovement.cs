@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     SkinnedMeshRenderer playerModel;
 
     GameObject[] stealthObjects;
-
+    Game game;
     int floorMask;
     float camRayLength = 100f;
 
@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
+        game = Game.GetGame();
         floorMask = LayerMask.GetMask("Floor");
         anim = GetComponent<Animation>();
         playerRigidBody = GetComponent<Rigidbody>();
@@ -177,4 +178,17 @@ public class PlayerMovement : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, rotationY, 0), Time.deltaTime * rotationSmoothing);
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("MediKit"))
+        {
+            if (game.GetScare()<100)
+            {
+                game.AddScare(10);
+                other.gameObject.SetActive(false);
+            }
+
+                
+        }
+    }
 }
