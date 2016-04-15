@@ -15,7 +15,6 @@ internal class SlimeHealth : MonoBehaviour
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
 
-    Animator anim;
     AudioSource slimeAudio;
     SlimeMovement slimeMovement;
     //SlimeShooting slimeShooting;
@@ -28,7 +27,6 @@ internal class SlimeHealth : MonoBehaviour
     {
         game = Game.GetGame();
 
-        anim = GetComponent<Animator>();
         slimeAudio = GetComponent<AudioSource>();
         slimeMovement = GetComponent<SlimeMovement>();
         //slimeShooting = GetComponentInChildren<SlimeShooting>();
@@ -37,6 +35,11 @@ internal class SlimeHealth : MonoBehaviour
 
     void Update()
     {
+        // Show health on health bar
+        float percentage = currentHealth;
+        float ratio = 0.01f;
+        GetComponentInChildren<Slider>().value = percentage * ratio;
+
         if (damaged)
         {
            // damageImage.color = flashColour;
@@ -76,8 +79,6 @@ internal class SlimeHealth : MonoBehaviour
         game.AddConfidence(4);
 
         //slimeShooting.DisableEffects();
-
-        anim.SetTrigger("Die");
 
         slimeAudio.clip = deathClip;
         slimeAudio.Play();

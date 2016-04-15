@@ -13,6 +13,7 @@ public class SlimeMovement : MonoBehaviour
     NavMeshAgent nav;               // Reference to the nav mesh agent.
 	GameObject stealthObject;
 
+	Animation anim; 				// Reference to this enemy's animations
 
     PlayerMovement playerMove;
     public float attackRange = 3f;
@@ -33,6 +34,8 @@ public class SlimeMovement : MonoBehaviour
         playerHealth = player.GetComponent<PlayerHealth>();
         playerMove = player.GetComponent<PlayerMovement>();
         enemyHealth = GetComponent<SlimeHealth>();
+		anim = GetComponent<Animation> ();
+		anim ["Attack"].layer = 1;
         nav = GetComponent<NavMeshAgent>();
 
         nav.enabled = false;
@@ -131,6 +134,7 @@ public class SlimeMovement : MonoBehaviour
     {
         if (canAttack)
         {
+			anim.CrossFade ("Attack");
             player.GetComponent<PlayerHealth>().TakeDamage(damage);
             AttackWait();
         }
