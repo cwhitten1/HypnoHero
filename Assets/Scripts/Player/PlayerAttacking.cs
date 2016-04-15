@@ -6,6 +6,12 @@ public class PlayerAttacking : MonoBehaviour
 	public float timeBetweenAttacks = 0.25f;
 	private GameObject attackableObject;
 
+    float originalDamagePerHit;
+    float confidenceMultiplier; /// <summary>
+    /// The amount your damage will be multiplied by when you have full confidence.
+    /// The damage will gradually increase the more confidence you get.
+    /// </summary>
+
 	float timer;
 	int attackableMask;
 	BoxCollider attackCollider;
@@ -19,6 +25,9 @@ public class PlayerAttacking : MonoBehaviour
 
 		anim = GetComponent<Animation> ();
 		anim ["Attack"].layer = 1;
+
+        confidenceMultiplier = 3;
+        originalDamagePerHit = damagePerHit;
 	}
 
 
@@ -26,7 +35,11 @@ public class PlayerAttacking : MonoBehaviour
 	{
 		timer += Time.deltaTime;
 
-		if(Input.GetButton ("Fire1") && timer >= timeBetweenAttacks && Time.timeScale != 0)
+        // Damage increases the more confidence you have.
+        damagePerHit = (int)(originalDamagePerHit * (1.0 + (confidenceMultiplier - 1) * (Game.GetGame().GetConfidence() / 100.0)));
+
+
+        if (Input.GetButton ("Fire1") && timer >= timeBetweenAttacks && Time.timeScale != 0)
 		{
 			Attack ();
 			Debug.LogWarning ("Attacking");
