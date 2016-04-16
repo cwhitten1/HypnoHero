@@ -4,11 +4,12 @@ using System.Collections;
 public class MediKit_Spawn : MonoBehaviour {
     public GameObject medikit;
     public Transform[] spawnPoints;
+    public float time_to_spawn = 20;
     Game game;
     // Use this for initialization
 
     void Start () {
-       
+        InvokeRepeating("startWave", 0, time_to_spawn);
     }
     void Awake()
     {
@@ -19,10 +20,10 @@ public class MediKit_Spawn : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         
-            startWave(spawnPoints);
+         //   startWave(spawnPoints);
 
     }
-    public void startWave(Transform[] spawnPoints)
+    public void startWave()
     {
         if (game.GetScare() < 50 && checkIsWaveCleared() == true)
         {
