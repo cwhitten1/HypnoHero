@@ -183,17 +183,5 @@ public class PlayerMovement : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, rotationY, 0), Time.deltaTime * rotationSmoothing);
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("MediKit"))
-        {
-            if (game.GetScare()<100)
-            {
-                game.AddScare(10);
-				Destroy (other.gameObject);
-            }
-
-                
-        }
-    }
+    
 }

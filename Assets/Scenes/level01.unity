@@ -680,7 +680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d4bbe8a85120f40ad57bf1c8bf4a7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  medikit: {fileID: 114294, guid: 98d8bc711c8bacc4ba60dd650d5a1d25, type: 2}
+  medikit: {fileID: 179832, guid: 416c2956185b58745bfd689cde492d8c, type: 2}
   spawnPoints:
   - {fileID: 1130790874}
   - {fileID: 1954090063}
@@ -23395,7 +23395,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1056229189}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: -9.6, y: -7.6, z: 52}
+  m_LocalPosition: {x: -9.6, y: -13.33, z: 52}
   m_LocalScale: {x: 0.24999996, y: 0.25, z: 0.12499998}
   m_Children: []
   m_Father: {fileID: 113651166}
@@ -25036,7 +25036,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1130790873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.2, y: -7.6, z: 42.2}
+  m_LocalPosition: {x: 18.2, y: -13.33, z: 42.2}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.125}
   m_Children: []
   m_Father: {fileID: 113651166}
@@ -42758,7 +42758,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1940256124}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0.6, y: -7.6, z: 97.8}
+  m_LocalPosition: {x: 0.6, y: -13.33, z: 97.8}
   m_LocalScale: {x: 0.24999988, y: 0.25, z: 0.12499994}
   m_Children: []
   m_Father: {fileID: 113651166}
@@ -43198,7 +43198,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1954090062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 43.2, y: -7.6, z: 60.4}
+  m_LocalPosition: {x: 43.2, y: -13.33, z: 60.4}
   m_LocalScale: {x: 0.24999996, y: 0.25, z: 0.12499998}
   m_Children: []
   m_Father: {fileID: 113651166}
