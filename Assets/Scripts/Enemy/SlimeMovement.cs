@@ -23,6 +23,12 @@ public class SlimeMovement : MonoBehaviour
     int damage;                     // How much damage the slime does.
     int attackWaitPeriod;           // How long the slime will wait between attacks.
 
+    bool isStunned;
+    float stunTime; /// <summary>
+    /// The number of seconds in which a slime is stunned
+    /// before becoming reanimated.
+    /// </summary>
+
     void Awake()
     {
         game = Game.GetGame();
@@ -36,11 +42,14 @@ public class SlimeMovement : MonoBehaviour
 		anim ["Attack"].layer = 1;
         nav = GetComponent<NavMeshAgent>();
 
-        nav.enabled = false;
+        SetNavEnabled(false);
 
 		EnableAttacking ();
         damage = 2;
         attackWaitPeriod = 1000;
+
+        isStunned = false;
+        stunTime = 3;
     }
 
 
@@ -51,11 +60,13 @@ public class SlimeMovement : MonoBehaviour
         distanceFromPlayer = Mathf.Sqrt(distanceFromPlayer);
 
         if (!nav.enabled && distanceFromPlayer > attackRange)
-            nav.enabled = true;
+            SetNavEnabled(true);
 
         bool playerAlive = playerHealth.currentHealth > 0,
         mobAlive = enemyHealth.currentHealth > 0,
         outOfRange = distanceFromPlayer > attackRange;
+
+
 
         if (mobAlive && playerAlive)
         {
@@ -93,10 +104,33 @@ public class SlimeMovement : MonoBehaviour
                 {
                     Attack();
                     //Debug.Log("Player in range and not stealth");
-                    nav.enabled = false;
+                    SetNavEnabled(false);
                 }
             }
+
         }
+    }
+    
+    public void Stun()
+    {
+        NavMeshAgent nav = GetComponent<NavMeshAgent>();
+        isStunned = true;
+        SetNavEnabled(false);
+        Invoke("UnStun", stunTime);
+    }
+
+    public void UnStun()
+    {
+        NavMeshAgent nav = GetComponent<NavMeshAgent>();
+        isStunned = false;
+        SetNavEnabled(true);
+    }
+
+
+    public void SetNavEnabled(bool enabled)
+    {
+        nav.enabled = true ? enabled && !isStunned : false;
+        // nav cannot be enabled when stunned, but can always be disabled.
     }
 
     void RunAway()
@@ -104,7 +138,7 @@ public class SlimeMovement : MonoBehaviour
         timeLeft -= Time.deltaTime;
         if (timeLeft < 0)
         {
-            if (!nav.enabled) nav.enabled = true;
+            if (!nav.enabled) SetNavEnabled(true);
             Vector3 nextPos;
             nextPos.x = nav.nextPosition.x + Random.Range(-1 * rangeBound, rangeBound);
             nextPos.z = nav.nextPosition.z + Random.Range(-1 * rangeBound, rangeBound);
