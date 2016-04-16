@@ -11,9 +11,11 @@ public class PlayerHealth : MonoBehaviour
     public Slider healthSlider;
     public Image damageImage;
     public AudioClip deathClip;
+	public float deathAnimSpeed = 0.75f;
     public float flashSpeed = 5f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
+	Animation anim;
     AudioSource playerAudio;
     PlayerMovement playerMovement;
 
@@ -29,6 +31,10 @@ public class PlayerHealth : MonoBehaviour
 
         playerAudio = GetComponent <AudioSource> ();
         playerMovement = GetComponent <PlayerMovement> ();
+		anim = GetComponent <Animation> ();
+		anim ["Dead"].layer = 3;
+		anim ["Dead"].speed = deathAnimSpeed;
+		anim ["Dead"].wrapMode = WrapMode.ClampForever;
 
         currentHealth = startingHealth;
     }
@@ -73,6 +79,14 @@ public class PlayerHealth : MonoBehaviour
 
         playerMovement.enabled = false;
 
-		game.RestartLevel();
+		anim.Play ("Dead");
+
+		//game.RestartLevel();
+		Invoke ("RestartLevel", 2);
     }
+
+	void RestartLevel()
+	{
+		game.RestartLevel();
+	}
 }
