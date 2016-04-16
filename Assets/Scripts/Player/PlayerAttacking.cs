@@ -17,6 +17,9 @@ public class PlayerAttacking : MonoBehaviour
 	BoxCollider attackCollider;
 	Animation anim;
 
+    float flashlightRange;
+    float flashlightIntensity;
+
 	void Awake ()
 	{
 		attackableMask = LayerMask.NameToLayer ("Attackable");
@@ -31,6 +34,8 @@ public class PlayerAttacking : MonoBehaviour
         confidenceMultiplier = 3;
         originalDamagePerHit = damagePerHit;
 
+        flashlightRange = 100;
+        flashlightIntensity = 3.4f;
 	}
 
 
@@ -47,10 +52,46 @@ public class PlayerAttacking : MonoBehaviour
 			Attack ();
 			Debug.LogWarning ("Attacking");
 		}
-			
-	}
 
-	void Attack ()
+        if (Input.GetButton("Fire2"))
+        {
+            FlashlightOn();
+
+            Ray shootRay = new Ray(transform.position, transform.forward);
+            RaycastHit shootHit;
+            float range = flashlightRange;
+            int shootableMask = LayerMask.GetMask("Attackable");
+            
+            if (Physics.Raycast(shootRay, out shootHit, range, shootableMask))
+            { 
+                SlimeMovement enemyMovement = shootHit.collider.GetComponent<SlimeMovement>();
+                if (enemyMovement != null)
+                {
+                    enemyMovement.Stun();
+
+                }
+            }
+        }
+        else
+        {
+            FlashlightOff();
+        }
+
+    }
+
+    void FlashlightOn()
+    {
+        GameObject.Find("Flashlight").GetComponent<MeshRenderer>().enabled = true;
+        GameObject.Find("FlashlightLight").GetComponent<Light>().intensity = flashlightIntensity;
+    }
+    
+    void FlashlightOff()
+    {
+        GameObject.Find("Flashlight").GetComponent<MeshRenderer>().enabled = false;
+        GameObject.Find("FlashlightLight").GetComponent<Light>().intensity = 0;
+    }
+
+    void Attack ()
 	{
 		timer = 0f;
 
