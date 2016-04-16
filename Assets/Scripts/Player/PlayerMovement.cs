@@ -4,22 +4,21 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 6f;
-    public float stealthDistance = 5f;
 
     public Color normColor = new Color(64f, 64f, 64f, 255f);
     public Color stealthColor = new Color(208f, 208f, 208f, 255f);
 
     public bool isStealth = false;
     private float rotationSmoothing = 10f;
-    
+
 
     public float stealthConfidenceSubtractFactor = 2; /// <summary>
-    /// The amount of confidence subtracted per second when in stealth.
-    /// </summary>
+                                                      /// The amount of confidence subtracted per second when in stealth.
+                                                      /// </summary>
 
     float fullConfidenceHealthAddFactor = 0.5f; /// <summary>
-                                               /// The amount of heath add per second when confidence is 100.
-                                               /// </summary>
+                                                /// The amount of heath add per second when confidence is 100.
+                                                /// </summary>
 
     Vector3 movement;
     Animation anim;
@@ -29,13 +28,17 @@ public class PlayerMovement : MonoBehaviour
     SkinnedMeshRenderer playerModel;
 
     GameObject[] stealthObjects;
+
+    public GameObject stealthObject;
+
+
     Game game;
     int floorMask;
     float camRayLength = 100f;
 
     int oldDamagePerHit; /// <summary>
-    /// The damage to reset to when the player leaves stealth.
-    /// </summary>
+                         /// The damage to reset to when the player leaves stealth.
+                         /// </summary>
 
     void Awake()
     {
@@ -67,27 +70,28 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Game.GetGame().GetConfidence() == 100)
             Game.GetGame().AddScare(Time.deltaTime * fullConfidenceHealthAddFactor);
-                
+
 
         foreach (var obj in stealthObjects)
         {
-            float objX = obj.transform.position.x,
-            objZ = obj.transform.position.z,
 
-            distanceFromPlayer = Mathf.Pow(player.position.x - objX, 2) + Mathf.Pow(player.position.z - objZ, 2);
-            distanceFromPlayer = Mathf.Sqrt(distanceFromPlayer);
-
-            if (distanceFromPlayer <= stealthDistance)
+			bool objCollision = obj.GetComponent<StealthObjects> ().isStealth;
+            if (objCollision)
             {
-                //Debug.Log("Player is stealth!");
-
-                //Change Colors
                 isStealth = true;
                 SetStealth(isStealth);
 
+                stealthObject = obj;
+                Game.GetGame()
+                    .SubtractConfidence(
+                        stealthConfidenceSubtractFactor * Time.deltaTime
+                    );
+
+
                 Game.GetGame().SubtractConfidence(stealthConfidenceSubtractFactor * Time.deltaTime);
-                
+
                 this.GetComponent<PlayerAttacking>().damagePerHit = 0;
+
 
                 return;
             }
@@ -96,12 +100,13 @@ public class PlayerMovement : MonoBehaviour
                 //Debug.Log("Player isn't stealth!");
                 this.GetComponent<PlayerAttacking>().damagePerHit = oldDamagePerHit;
 
+
                 isStealth = false;
                 SetStealth(isStealth);
             }
         }
 
-        
+
         float h = Input.GetAxisRaw("Horizontal"); //Raw axis returns either -1,0,1
         float v = Input.GetAxisRaw("Vertical");
 
