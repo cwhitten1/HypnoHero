@@ -562,6 +562,7 @@ MonoBehaviour:
   - {fileID: 1954090063}
   - {fileID: 1056229190}
   - {fileID: 1940256125}
+  time_to_spawn: 20
 --- !u!4 &26831824
 Transform:
   m_ObjectHideFlags: 0
@@ -8101,6 +8102,7 @@ MonoBehaviour:
   healthSlider: {fileID: 0}
   damageImage: {fileID: 506674985}
   deathClip: {fileID: 0}
+  deathAnimSpeed: 0.75
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
   damaged: 0
@@ -14586,8 +14588,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_Font: {fileID: 12800000, guid: 96245e7ac330be848842d5d1fe29eece, type: 3}
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -14596,7 +14598,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Paused
 --- !u!222 &1203817820
@@ -25103,7 +25105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.25882354, g: 0.25882354, b: 0.25882354, a: 0.516}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.572}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
