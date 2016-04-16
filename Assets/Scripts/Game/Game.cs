@@ -14,6 +14,7 @@ public class Game : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        GameObject.Find("Battery3").GetComponent<Battery>().BlackOut();
         InitScareAndConfidence(100, 0);
     }
 	
