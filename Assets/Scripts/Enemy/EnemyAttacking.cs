@@ -30,7 +30,9 @@ public abstract class EnemyAttacking : MonoBehaviour
 	}
 
 	protected abstract void doAttack ();
-		
+
+	public abstract bool CheckIfInAttackRange ();
+	public abstract bool CheckIfFacingPlayer();
 
 	public void DisableAttacking(){
 		canAttack = false;

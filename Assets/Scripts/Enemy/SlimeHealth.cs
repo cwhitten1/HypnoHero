@@ -10,6 +10,8 @@ internal class SlimeHealth : MonoBehaviour
     public int currentHealth;
     public int confidenceValue = 4;
 
+    public float healthFactor = 1.5f;
+
     //public Slider healthSlider;
     public Image damageImage;
     public AudioClip deathClip;
@@ -59,7 +61,6 @@ internal class SlimeHealth : MonoBehaviour
         }
 
     }
-
 
     public void TakeDamage(int amount)
     {

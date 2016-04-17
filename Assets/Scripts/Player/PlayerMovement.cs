@@ -51,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
         playerModel = GameObject.FindGameObjectWithTag("PlayerModel").GetComponent<SkinnedMeshRenderer>();
         stealthObjects = GameObject.FindGameObjectsWithTag("Stealth");
 
-        oldDamagePerHit = player.GetComponent<PlayerAttacking>().damagePerHit;
     }
 
     void FixedUpdate()
@@ -68,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        oldDamagePerHit = player.GetComponent<PlayerAttacking>().damagePerHit;
         if (Game.GetGame().GetConfidence() == 100)
             Game.GetGame().AddScare(Time.deltaTime * fullConfidenceHealthAddFactor);
 
@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
         {
 
 			bool objCollision = obj.GetComponent<StealthObjects> ().isStealth;
-            if (objCollision)
+            if (objCollision && game.GetConfidence() > 0)
             {
                 isStealth = true;
                 SetStealth(isStealth);
@@ -87,12 +87,7 @@ public class PlayerMovement : MonoBehaviour
                         stealthConfidenceSubtractFactor * Time.deltaTime
                     );
 
-
-                Game.GetGame().SubtractConfidence(stealthConfidenceSubtractFactor * Time.deltaTime);
-
                 this.GetComponent<PlayerAttacking>().damagePerHit = 0;
-
-
                 return;
             }
             else

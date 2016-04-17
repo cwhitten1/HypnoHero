@@ -13,17 +13,17 @@ public class SlimeMovement : MonoBehaviour
 	EnemyAttacking enemyAttacking;  // Reference to the slime's attacking script.
     NavMeshAgent nav;               // Reference to the nav mesh agent.
     GameObject stealthObject;
-    GameObject environment;
+
     Animation anim; 				// Reference to this enemy's animations
 
-    PlayerMovement playerMove;
-    private const float minAttackRange = 3f;
-
-    private float attackRange;
-    public float rangeAdjustment = -.5f;
+	PlayerMovement playerMove;
+   
     public float timerInterval = 1.5f;
-    public float rangeBound = 10f;
+	public float rangeBound = 10f;
+
+	public float rotateSpeed = 2f;
     float timeLeft = 0f;
+
 
 	public float stunTime = 3; /// <summary>
                                /// The number of seconds in which a slime is stunned
@@ -38,8 +38,6 @@ public class SlimeMovement : MonoBehaviour
     {
         game = Game.GetGame();
 
-        // Set up the references.
-        environment = GameObject.FindGameObjectWithTag("Environment");
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerHealth = player.GetComponent<PlayerHealth>();
         playerMove = player.GetComponent<PlayerMovement>();
@@ -57,65 +55,42 @@ public class SlimeMovement : MonoBehaviour
 
     void Update()
     {
-        float slimeScaleFactor = environment.GetComponent<SlimeScaling>().scaleFactor;
-        attackRange = minAttackRange * slimeScaleFactor + rangeAdjustment;
-        Debug.Log("Setting new attack range: " + attackRange);
 
-        float distanceFromPlayer = Mathf.Pow(player.position.x - nav.nextPosition.x, 2) + Mathf.Pow(player.position.z - nav.nextPosition.z, 2);
-        distanceFromPlayer = Mathf.Sqrt(distanceFromPlayer);
-
-        if (!nav.enabled && distanceFromPlayer > attackRange)
+		bool outOfRange = !enemyAttacking.CheckIfInAttackRange ();
+		if (!nav.enabled && outOfRange)
             SetNavEnabled(true);
 
-        bool playerAlive = playerHealth.currentHealth > 0,
-        mobAlive = enemyHealth.currentHealth > 0,
-        outOfRange = distanceFromPlayer > attackRange;
-
+		bool playerAlive = playerHealth.currentHealth > 0,
+		mobAlive = enemyHealth.currentHealth > 0;
 
 
         if (mobAlive && playerAlive)
         {
-            //Player out of attack range.
-            if (outOfRange)
+            //Player stealth.
+            if (playerMove.isStealth)
             {
-                //Or not attacking?
-                if (nav.enabled)
-                {
-                    //Player stealth.
-                    if (playerMove.isStealth)
-                    {
-                        stealthObject = GameObject.FindGameObjectWithTag("Player")
-                            .GetComponent<PlayerMovement>()
-                            .stealthObject;
-                        RunAway();
-                    }
-                    //Player not stealth.
-                    else
-                    {
-                        //Debug.Log("Chasing player.");
-                        nav.SetDestination(player.position);
-                    }
-                }
+                stealthObject = GameObject.FindGameObjectWithTag("Player")
+                    .GetComponent<PlayerMovement>()
+                    .stealthObject;
+                RunAway();
             }
-            //Player in attack range.
+            //Player not stealth.
             else
             {
-                //Is stealth.
-                if (playerMove.isStealth)
-                {
-                    //Debug.Log("Player in range and stealth");
-                    RunAway();
-                }
-
-                //Player not stealth.
-                else
-                {
-                    enemyAttacking.Attack();
-                    //Debug.Log("Player in range and not stealth");
-                    SetNavEnabled(false);
-                }
+				if (outOfRange) {
+					//Debug.Log("Chasing player.");
+					nav.SetDestination (player.position);
+				} 
+				else {
+					
+					SetNavEnabled(false);
+					if (enemyAttacking.CheckIfFacingPlayer ())
+						enemyAttacking.Attack ();
+					else
+						RotateSlimeTowardsPlayer ();
+					//Debug.Log("Player in range and not stealth");
+				}
             }
-
         }
     }
     
@@ -168,4 +143,16 @@ public class SlimeMovement : MonoBehaviour
         }
 
     }
+
+	void RotateSlimeTowardsPlayer(){
+		Vector3 directionToTarget = player.transform.position -transform.position;
+		float angle = Vector3.Angle (transform.forward, directionToTarget);
+
+		float rotation = rotateSpeed;
+
+		if (angle < 0)
+			rotation *= -1;
+
+		transform.Rotate (new Vector3 (0, rotation, 0));
+	}
 }

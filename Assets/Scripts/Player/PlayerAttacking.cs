@@ -2,7 +2,7 @@
 
 public class PlayerAttacking : MonoBehaviour
 {
-	public int damagePerHit = 50;
+	public int damagePerHit = 0;
 	public float timeBetweenAttacks = 0.25f;
 	private GameObject attackableObject;
 
@@ -34,8 +34,6 @@ public class PlayerAttacking : MonoBehaviour
 		anim ["Attack"].layer = 2;
 		anim ["Attack"].speed = anim ["Attack"].length / timeBetweenAttacks;
 
-
-        confidenceMultiplier = 3;
         originalDamagePerHit = damagePerHit;
 
         flashlightRange = 100;
@@ -44,11 +42,17 @@ public class PlayerAttacking : MonoBehaviour
 
 
 	void Update ()
-	{
-		timer += Time.deltaTime;
+    {
+        Debug.Log(damagePerHit);
+        timer += Time.deltaTime;
+        int confidence = Game.GetGame().GetConfidence();
 
         // Damage increases the more confidence you have.
-        damagePerHit = (int)(originalDamagePerHit * (1.0 + (confidenceMultiplier - 1) * (Game.GetGame().GetConfidence() / 100.0)));
+        damagePerHit = (int) System.Math.Ceiling(
+            (originalDamagePerHit *
+            (1 +  (confidence / 100.0))
+            ));
+        Debug.Log(damagePerHit);
 
 
         if (Input.GetButton ("Fire1") && timer >= timeBetweenAttacks && Time.timeScale != 0)
@@ -147,6 +151,7 @@ public class PlayerAttacking : MonoBehaviour
 
 	void DamageAttackableObject()
 	{
+        Debug.Log(damagePerHit);
 		attackableObject.GetComponent<SlimeHealth>().TakeDamage (damagePerHit);
 	}
 

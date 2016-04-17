@@ -505,6 +505,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 3
   attackWaitPeriod: 1000
+  attackArc: 45
+  rangeAdjustment: -0.5
 --- !u!114 &11495228
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -516,9 +518,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848eb252f84e6064f955ddc184c2bf60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangeAdjustment: -1
   timerInterval: 0.7
   rangeBound: 10
+  rotateSpeed: 2
   stunTime: 3
 --- !u!114 &11497034
 MonoBehaviour:
@@ -817,6 +819,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: stunTime
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: rotateSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackArc
+      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
