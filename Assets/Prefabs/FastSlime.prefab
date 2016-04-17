@@ -381,7 +381,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64dfa31e89b0ef24fbab035738bbbccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingHealth: 80
   currentHealth: 0
+  confidenceValue: 8
   damageImage: {fileID: 0}
   deathClip: {fileID: 0}
   flashSpeed: 5
@@ -399,8 +401,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18fe31961b2323049ad8adfd0d65cfe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
-  attackWaitPeriod: 1000
+  damage: 2
+  attackWaitPeriod: 650
 --- !u!114 &11410280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -784,6 +786,22 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7bedb88d55d6bab4b827afc672220c29, type: 2}
+    - target: {fileID: 0}
+      propertyPath: startingHealth
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackWaitPeriod
+      value: 650
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: confidenceValue
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 114366}

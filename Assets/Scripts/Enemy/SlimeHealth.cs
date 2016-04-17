@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 
 internal class SlimeHealth : MonoBehaviour
 {
-    public static int startingHealth = 100; //Say "Hello" to my little friend!
+    public int startingHealth = 100; //Say "Hello" to my little friend!
     public int currentHealth;
+	public int confidenceValue = 4;
+
     //public Slider healthSlider;
     public Image damageImage;
     public AudioClip deathClip;
@@ -95,7 +97,7 @@ internal class SlimeHealth : MonoBehaviour
         
         isDead = true;
 
-        game.AddConfidence(4);
+		game.AddConfidence(confidenceValue);
 
         slimeAudio.clip = deathClip;
         slimeAudio.Play();

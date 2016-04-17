@@ -25,7 +25,7 @@ public class SlimeMovement : MonoBehaviour
     public float rangeBound = 10f;
     float timeLeft = 0f;
 
-	public float stunTime; /// <summary>
+	public float stunTime = 3; /// <summary>
 	/// The number of seconds in which a slime is stunned
 	/// before becoming reanimated.
 	/// </summary>
@@ -50,7 +50,6 @@ public class SlimeMovement : MonoBehaviour
         SetNavEnabled(false);
 
         isStunned = false;
-        stunTime = 3;
     }
 
 

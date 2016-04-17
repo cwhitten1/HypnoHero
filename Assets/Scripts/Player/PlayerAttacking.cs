@@ -50,7 +50,7 @@ public class PlayerAttacking : MonoBehaviour
         if (Input.GetButton ("Fire1") && timer >= timeBetweenAttacks && Time.timeScale != 0)
 		{
 			Attack ();
-			Debug.LogWarning ("Attacking");
+			//Debug.LogWarning ("Attacking");
 		}
 
         if (Input.GetButton("Fire2"))
