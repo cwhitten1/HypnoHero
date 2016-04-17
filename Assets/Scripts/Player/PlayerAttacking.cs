@@ -19,8 +19,12 @@ public class PlayerAttacking : MonoBehaviour
 
     float flashlightRange;
     float flashlightIntensity;
+    float flashlightBatteryDrainSpeed = 20;/// <summary>
+    /// percentage per second flashlight is being used
+    /// </summary>
 
-	void Awake ()
+
+    void Awake ()
 	{
 		attackableMask = LayerMask.NameToLayer ("Attackable");
 		attackCollider = GetComponent<BoxCollider> ();
@@ -50,10 +54,11 @@ public class PlayerAttacking : MonoBehaviour
         if (Input.GetButton ("Fire1") && timer >= timeBetweenAttacks && Time.timeScale != 0)
 		{
 			Attack ();
+            Game.GetGame().CollectBattery();
 			//Debug.LogWarning ("Attacking");
 		}
 
-        if (Input.GetButton("Fire2"))
+        if (Input.GetButton("Fire2") && Game.GetGame().GetBatteryLife() > 0)
         {
             FlashlightOn();
 
@@ -83,6 +88,7 @@ public class PlayerAttacking : MonoBehaviour
     {
         GameObject.Find("Flashlight").GetComponent<MeshRenderer>().enabled = true;
         GameObject.Find("FlashlightLight").GetComponent<Light>().intensity = flashlightIntensity;
+        Game.GetGame().DrainBattery(Time.deltaTime*flashlightBatteryDrainSpeed);
     }
     
     void FlashlightOff()
