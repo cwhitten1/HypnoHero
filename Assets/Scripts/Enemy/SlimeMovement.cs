@@ -10,6 +10,7 @@ public class SlimeMovement : MonoBehaviour
     Transform player;               // Reference to the player's position.
     PlayerHealth playerHealth;      // Reference to the player's health.
     SlimeHealth enemyHealth;        // Reference to this enemy's health.
+	EnemyAttacking enemyAttacking;  // Reference to the slime's attacking script.
     NavMeshAgent nav;               // Reference to the nav mesh agent.
     GameObject stealthObject;
     GameObject environment;
@@ -24,15 +25,12 @@ public class SlimeMovement : MonoBehaviour
     public float rangeBound = 10f;
     float timeLeft = 0f;
 
-    bool canAttack;                 // Whether the slime is able to attack.
-    int damage;                     // How much damage the slime does.
-    int attackWaitPeriod;           // How long the slime will wait between attacks.
+	public float stunTime; /// <summary>
+	/// The number of seconds in which a slime is stunned
+	/// before becoming reanimated.
+	/// </summary>
 
     bool isStunned;
-    float stunTime; /// <summary>
-    /// The number of seconds in which a slime is stunned
-    /// before becoming reanimated.
-    /// </summary>
 
     void Awake()
     {
@@ -44,15 +42,12 @@ public class SlimeMovement : MonoBehaviour
         playerHealth = player.GetComponent<PlayerHealth>();
         playerMove = player.GetComponent<PlayerMovement>();
         enemyHealth = GetComponent<SlimeHealth>();
+		enemyAttacking = GetComponent<EnemyAttacking> ();
         anim = GetComponent<Animation>();
-        anim["Attack"].layer = 1;
+
         nav = GetComponent<NavMeshAgent>();
 
         SetNavEnabled(false);
-
-		EnableAttacking ();
-        damage = 2;
-        attackWaitPeriod = 1000;
 
         isStunned = false;
         stunTime = 3;
@@ -114,7 +109,7 @@ public class SlimeMovement : MonoBehaviour
                 //Player not stealth.
                 else
                 {
-                    Attack();
+                    enemyAttacking.Attack();
                     //Debug.Log("Player in range and not stealth");
                     SetNavEnabled(false);
                 }
@@ -168,58 +163,4 @@ public class SlimeMovement : MonoBehaviour
         }
 
     }
-    /// <summary>
-    /// This triggers the slime to attack the character.
-    /// Maybe this should be in an "attack script" or something
-    /// but I didn't want to add a new script to every slime.
-    /// </summary>
-    void Attack()
-    {
-        if (canAttack)
-        {
-
-            anim.CrossFade("Attack");
-            player.GetComponent<PlayerHealth>().TakeDamage(damage);
-
-			float animationDuration = anim ["Attack"].length;
-			Invoke ("DamagePlayer", animationDuration/2);
-
-            AttackWait();
-        }
-    }
-
-	void DamagePlayer(){
-		player.GetComponent<PlayerHealth>().TakeDamage(damage);
-	}
-
-    /// <summary>
-    /// After attacking, the slime must wait temporarily before attacking again.
-    /// </summary>
-    void AttackWait()
-    {
-		DisableAttacking ();
-
-        Timer t = new Timer();
-        t.Elapsed += new ElapsedEventHandler(AttackWaitFinished);
-        t.Interval = attackWaitPeriod;
-        t.AutoReset = false;
-        t.Start();
-    }
-
-    /// <summary>
-    /// The slime is able to attack again after the set period of time.
-    /// </summary>
-    void AttackWaitFinished(object sender, ElapsedEventArgs args)
-    {
-        canAttack = true;
-        ((Timer)sender).Dispose();
-    }
-
-	public void DisableAttacking(){
-		canAttack = false;
-	}
-
-	public void EnableAttacking(){
-		canAttack = true;
-	}
 }

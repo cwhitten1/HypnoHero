@@ -65,6 +65,7 @@ GameObject:
   - 82: {fileID: 8275750}
   - 114: {fileID: 11457950}
   - 114: {fileID: 11400122}
+  - 114: {fileID: 11400152}
   m_Layer: 8
   m_Name: FastSlime
   m_TagString: CurrentWave
@@ -386,6 +387,20 @@ MonoBehaviour:
   flashSpeed: 5
   sinkSpeed: 3
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
+  damagedAttackDelay: 1
+--- !u!114 &11400152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fe31961b2323049ad8adfd0d65cfe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 3
+  attackWaitPeriod: 1000
 --- !u!114 &11410280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -523,6 +538,7 @@ MonoBehaviour:
   rangeAdjustment: -1
   timerInterval: 0.7
   rangeBound: 10
+  stunTime: 0
 --- !u!114 &11465206
 MonoBehaviour:
   m_ObjectHideFlags: 1

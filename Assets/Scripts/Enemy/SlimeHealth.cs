@@ -14,12 +14,14 @@ internal class SlimeHealth : MonoBehaviour
     public float flashSpeed = 5f;
 	public float sinkSpeed = 0.2f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
+	public float damagedAttackDelay = 1.0f; //The time in seconds to wait before attacking if the slime is damaged
 	Animation anim; 				// Reference to this enemy's animations
 
 	Collider[] colliders;
     AudioSource slimeAudio;
     SlimeMovement slimeMovement;
-    //SlimeShooting slimeShooting;
+	EnemyAttacking enemyAttacking; // Reference to this enemy's attacking-related functions
+
     bool isDead;
     bool damaged;
 	bool isSinking;
@@ -32,11 +34,11 @@ internal class SlimeHealth : MonoBehaviour
 
         slimeAudio = GetComponent<AudioSource>();
         slimeMovement = GetComponent<SlimeMovement>();
+		enemyAttacking = GetComponent<EnemyAttacking> ();
 		anim = GetComponent<Animation> ();
 		anim ["Damage"].layer = 1;
 		colliders = GetComponents<Collider> ();
 
-        //slimeShooting = GetComponentInChildren<SlimeShooting>();
         currentHealth = startingHealth; // set it to a more reasonable value
     }
 
@@ -68,9 +70,10 @@ internal class SlimeHealth : MonoBehaviour
 		//Fade in damaged animation and disable attacking for the duration of the animation
 		if (!isDead) {
 			float animLength = anim ["Damage"].clip.length;
-			slimeMovement.DisableAttacking ();
+			enemyAttacking.DisableAttacking ();
 			anim.CrossFade ("Damage");
-			Invoke ("ReenableSlimeAttacking", animLength);
+			CancelInvoke ("ReenableSlimeAttacking"); //Prevent attacking from coming back early 
+			Invoke ("ReenableSlimeAttacking", animLength + damagedAttackDelay);
 
 		}
 
@@ -83,7 +86,7 @@ internal class SlimeHealth : MonoBehaviour
     }
 
 	void ReenableSlimeAttacking(){
-		slimeMovement.EnableAttacking ();
+		enemyAttacking.EnableAttacking ();
 	}
 
 
