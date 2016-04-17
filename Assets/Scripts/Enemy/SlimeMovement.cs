@@ -26,9 +26,11 @@ public class SlimeMovement : MonoBehaviour
     float timeLeft = 0f;
 
 	public float stunTime = 3; /// <summary>
-	/// The number of seconds in which a slime is stunned
-	/// before becoming reanimated.
-	/// </summary>
+                               /// The number of seconds in which a slime is stunned
+                               /// before becoming reanimated.
+                               /// </summary>
+
+    private float timeOfLastStun;
 
     bool isStunned;
 
@@ -123,13 +125,17 @@ public class SlimeMovement : MonoBehaviour
         isStunned = true;
         SetNavEnabled(false);
         Invoke("UnStun", stunTime);
+        timeOfLastStun = Time.time;
     }
 
     public void UnStun()
     {
-        NavMeshAgent nav = GetComponent<NavMeshAgent>();
-        isStunned = false;
-        SetNavEnabled(true);
+        if (Time.time >= timeOfLastStun + stunTime-0.1f)
+        {
+            NavMeshAgent nav = GetComponent<NavMeshAgent>();
+            isStunned = false;
+            SetNavEnabled(true);
+        }
     }
 
 
