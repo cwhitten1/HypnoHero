@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64dfa31e89b0ef24fbab035738bbbccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 140
+  startingHealth: 240
   currentHealth: 0
   confidenceValue: 30
   damageImage: {fileID: 0}
@@ -566,7 +566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18fe31961b2323049ad8adfd0d65cfe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 6
+  damage: 3
   attackWaitPeriod: 1250
 --- !u!135 &13554230
 SphereCollider:
@@ -780,7 +780,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: startingHealth
-      value: 140
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: confidenceValue
@@ -789,6 +789,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
