@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using UnityEngine.SceneManagement;
 
 
 public class PlayerHealth : MonoBehaviour
@@ -82,12 +80,9 @@ public class PlayerHealth : MonoBehaviour
 		anim.Stop ();
 		anim.Play ("Dead");
 
-		//game.RestartLevel();
-		Invoke ("RestartLevel", 2);
+        //game.RestartLevel();
+        GameObject.Find("Pause Menu").GetComponent<PauseMenu>().GameOver();
+        
     }
 
-	void RestartLevel()
-	{
-		game.RestartLevel();
-	}
 }

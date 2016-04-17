@@ -21,7 +21,7 @@ public class StartMenu : MonoBehaviour {
 			OnMouseDown ();
 	}
 
-	void OnMouseDown(){;
+	void OnMouseDown(){
 		var mousePos = Input.mousePosition;
         if (startBounds.Contains(mousePos))
         {

@@ -19,6 +19,8 @@ TagManager:
   - MediKit
   - Pause Menu
   - Fade
+  - PauseTitle
+  - GameOverText
   layers:
   - Default
   - TransparentFX
