@@ -562,6 +562,7 @@ MonoBehaviour:
   - {fileID: 1954090063}
   - {fileID: 1056229190}
   - {fileID: 1940256125}
+  time_to_spawn: 20
 --- !u!4 &26831824
 Transform:
   m_ObjectHideFlags: 0
@@ -4039,8 +4040,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
 <<<<<<< HEAD
-  - 4: {fileID: 332074163}
-=======
   - 4: {fileID: 292678369}
   - 33: {fileID: 292678372}
   - 23: {fileID: 292678371}
@@ -6270,7 +6269,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyDiversity:
   - enemy: {fileID: 170618, guid: 46b31409c0e40db4db8b4ec18f03a0ae, type: 2}
-    numToSpawn: 3
+    numToSpawn: 2
+  - enemy: {fileID: 114366, guid: 413b9d9d591b3494697d0e5c975b3957, type: 2}
+    numToSpawn: 1
+  - enemy: {fileID: 127316, guid: c2a8a4b30393bb5478e163eb66933061, type: 2}
+    numToSpawn: 1
+  - enemy: {fileID: 114034, guid: 532c7138f004f104d98f83b2665d39c4, type: 2}
+    numToSpawn: 0
 --- !u!4 &403426404
 Transform:
   m_ObjectHideFlags: 0
@@ -7551,7 +7556,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyDiversity:
   - enemy: {fileID: 170618, guid: 46b31409c0e40db4db8b4ec18f03a0ae, type: 2}
-    numToSpawn: 5
+    numToSpawn: 3
+  - enemy: {fileID: 114366, guid: 413b9d9d591b3494697d0e5c975b3957, type: 2}
+    numToSpawn: 2
+  - enemy: {fileID: 127316, guid: c2a8a4b30393bb5478e163eb66933061, type: 2}
+    numToSpawn: 1
+  - enemy: {fileID: 114034, guid: 532c7138f004f104d98f83b2665d39c4, type: 2}
+    numToSpawn: 1
 --- !u!1 &461831692
 GameObject:
   m_ObjectHideFlags: 0
@@ -10473,6 +10484,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 618554109}
+=======
+  - 4: {fileID: 332074163}
 >>>>>>> master
   m_Layer: 8
   m_Name: L_wrist
@@ -10575,8 +10588,9 @@ GameObject:
   - 224: {fileID: 337794282}
   - 222: {fileID: 337794284}
   - 114: {fileID: 337794283}
+  - 114: {fileID: 337794285}
   m_Layer: 5
-  m_Name: PowerUp1
+  m_Name: Battery1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10636,7 +10650,32 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 337794281}
+--- !u!114 &337794285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 337794281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3a64d523f09c74bb80a4599d9fb9f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  enemyDiversity:
+  - enemy: {fileID: 170618, guid: 46b31409c0e40db4db8b4ec18f03a0ae, type: 2}
+    numToSpawn: 4
+  - enemy: {fileID: 114366, guid: 413b9d9d591b3494697d0e5c975b3957, type: 2}
+    numToSpawn: 3
+  - enemy: {fileID: 127316, guid: c2a8a4b30393bb5478e163eb66933061, type: 2}
+    numToSpawn: 2
+  - enemy: {fileID: 114034, guid: 532c7138f004f104d98f83b2665d39c4, type: 2}
+    numToSpawn: 2
+--- !u!1 &627805386
+=======
+  currentBattery: 0
 --- !u!1 &349735040
+>>>>>>> master
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 118834, guid: daabafbd6acd6994d885a612510ea80c, type: 2}
@@ -10778,8 +10817,9 @@ GameObject:
   - 224: {fileID: 366379262}
   - 222: {fileID: 366379264}
   - 114: {fileID: 366379263}
+  - 114: {fileID: 366379265}
   m_Layer: 5
-  m_Name: PowerUp2
+  m_Name: Battery2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10839,6 +10879,18 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 366379261}
+--- !u!114 &366379265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 366379261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3a64d523f09c74bb80a4599d9fb9f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentBattery: 0
 --- !u!1 &366753591
 GameObject:
   m_ObjectHideFlags: 0
@@ -11173,42 +11225,7 @@ GameObject:
 --- !u!4 &391200811
 Transform:
   m_ObjectHideFlags: 0
-<<<<<<< HEAD
   m_PrefabParentObject: {fileID: 423906, guid: daabafbd6acd6994d885a612510ea80c, type: 2}
-=======
-  m_PrefabParentObject: {fileID: 400002, guid: df0777a2e75ec7048b28e7c394efbd53, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 655034067}
-  m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.025, y: 0.025, z: 0.025}
-  m_Children:
-  - {fileID: 1502516669}
-  - {fileID: 689622519}
-  - {fileID: 1213763036}
-  - {fileID: 447114176}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
---- !u!54 &655034070
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 655034067}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: Infinity
-  m_AngularDrag: Infinity
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 84
-  m_CollisionDetection: 0
---- !u!111 &655034071
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
->>>>>>> master
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 391200810}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -11228,10 +11245,50 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
+<<<<<<< HEAD
+  m_Size: {x: 94.21928, y: 87.79683, z: -78.85766}
+  m_Center: {x: 0, y: 50, z: 60}
+--- !u!114 &655034074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 655034067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a19cb86f2c59f74bae919c34ab3bc66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagePerHit: 20
+  timeBetweenAttacks: 0.25
+--- !u!114 &655034075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 655034067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 544f2064df03e95419b4a5147c506b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  currentHealth: 0
+  healthSlider: {fileID: 0}
+  damageImage: {fileID: 506674985}
+  deathClip: {fileID: 0}
+  deathAnimSpeed: 0.75
+  flashSpeed: 5
+  flashColour: {r: 1, g: 0, b: 0, a: 0.1}
+  damaged: 0
+--- !u!120 &655034076
+LineRenderer:
+=======
   m_Size: {x: 5.3407426, y: 2.769274, z: 0.07585916}
   m_Center: {x: 0, y: 0, z: 0.03792934}
 --- !u!23 &391200813
 MeshRenderer:
+>>>>>>> master
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 2317532, guid: daabafbd6acd6994d885a612510ea80c,
     type: 2}
@@ -11857,28 +11914,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
   m_IsActive: 1
-<<<<<<< HEAD
 --- !u!4 &443197947
-=======
---- !u!4 &689622519
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400064, guid: df0777a2e75ec7048b28e7c394efbd53, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 689622518}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 161208531}
-  - {fileID: 2135681279}
-  - {fileID: 1233676543}
-  - {fileID: 2021983918}
-  - {fileID: 217635706}
-  m_Father: {fileID: 655034069}
-  m_RootOrder: 1
---- !u!4 &694742311 stripped
->>>>>>> master
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 435836, guid: daabafbd6acd6994d885a612510ea80c, type: 2}
@@ -11964,7 +12000,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 655034069}
-  m_RootOrder: 1
+  m_RootOrder: 3
 --- !u!1 &453730475
 GameObject:
   m_ObjectHideFlags: 0
@@ -14346,6 +14382,24 @@ Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400872, guid: daabafbd6acd6994d885a612510ea80c, type: 2}
   m_PrefabInternal: {fileID: 0}
+<<<<<<< HEAD
+  m_GameObject: {fileID: 826784795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b1899917c6c05742b3fa9b3879be96b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyDiversity:
+  - enemy: {fileID: 170618, guid: 46b31409c0e40db4db8b4ec18f03a0ae, type: 2}
+    numToSpawn: 1
+  - enemy: {fileID: 114366, guid: 413b9d9d591b3494697d0e5c975b3957, type: 2}
+    numToSpawn: 0
+  - enemy: {fileID: 127316, guid: c2a8a4b30393bb5478e163eb66933061, type: 2}
+    numToSpawn: 0
+  - enemy: {fileID: 114034, guid: 532c7138f004f104d98f83b2665d39c4, type: 2}
+    numToSpawn: 0
+--- !u!4 &826784797
+=======
   m_GameObject: {fileID: 648762928}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 151.33017, y: 42.407776, z: -643.06274}
@@ -14373,6 +14427,7 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &651278433
+>>>>>>> master
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 412796, guid: daabafbd6acd6994d885a612510ea80c, type: 2}
@@ -14511,7 +14566,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.025, y: 0.025, z: 0.025}
   m_Children:
+  - {fileID: 1502516669}
   - {fileID: 689622519}
+  - {fileID: 1213763036}
   - {fileID: 447114176}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -14590,6 +14647,7 @@ MonoBehaviour:
   healthSlider: {fileID: 0}
   damageImage: {fileID: 506674985}
   deathClip: {fileID: 0}
+  deathAnimSpeed: 0.75
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
   damaged: 0
@@ -15190,7 +15248,7 @@ Transform:
   - {fileID: 2021983918}
   - {fileID: 217635706}
   m_Father: {fileID: 655034069}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1 &695973299
 GameObject:
   m_ObjectHideFlags: 0
@@ -25868,7 +25926,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyDiversity:
   - enemy: {fileID: 170618, guid: 46b31409c0e40db4db8b4ec18f03a0ae, type: 2}
-    numToSpawn: 2
+    numToSpawn: 1
+  - enemy: {fileID: 114366, guid: 413b9d9d591b3494697d0e5c975b3957, type: 2}
+    numToSpawn: 1
+  - enemy: {fileID: 127316, guid: c2a8a4b30393bb5478e163eb66933061, type: 2}
+    numToSpawn: 0
+  - enemy: {fileID: 114034, guid: 532c7138f004f104d98f83b2665d39c4, type: 2}
+    numToSpawn: 0
 --- !u!1 &1516992439
 GameObject:
   m_ObjectHideFlags: 0
@@ -26123,7 +26187,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyDiversity:
   - enemy: {fileID: 170618, guid: 46b31409c0e40db4db8b4ec18f03a0ae, type: 2}
-    numToSpawn: 13
+    numToSpawn: 5
+  - enemy: {fileID: 114366, guid: 413b9d9d591b3494697d0e5c975b3957, type: 2}
+    numToSpawn: 3
+  - enemy: {fileID: 127316, guid: c2a8a4b30393bb5478e163eb66933061, type: 2}
+    numToSpawn: 4
+  - enemy: {fileID: 114034, guid: 532c7138f004f104d98f83b2665d39c4, type: 2}
+    numToSpawn: 2
 --- !u!1 &1532827003
 GameObject:
   m_ObjectHideFlags: 0
@@ -27399,8 +27469,9 @@ GameObject:
   - 224: {fileID: 1616840999}
   - 222: {fileID: 1616841001}
   - 114: {fileID: 1616841000}
+  - 114: {fileID: 1616841002}
   m_Layer: 5
-  m_Name: PowerUp3
+  m_Name: Battery3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27461,6 +27532,18 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1616840998}
+--- !u!114 &1616841002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1616840998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3a64d523f09c74bb80a4599d9fb9f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentBattery: 1
 --- !u!1 &1622325003
 GameObject:
   m_ObjectHideFlags: 0

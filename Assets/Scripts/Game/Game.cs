@@ -11,15 +11,80 @@ public class Game : MonoBehaviour {
     private Slider confidenceSlider;
     private Slider scareSlider;
 
+    private int numberOfBatteries;
+    private int maxBatteries;
+    private float batteryLife;
+    private Battery[] batteries;
+
     // Use this for initialization
     void Start()
     {
         InitScareAndConfidence(100, 0);
+        numberOfBatteries = 3;
+        maxBatteries = 3;
+        batteryLife = 100;
+        Battery battery1Object = GameObject.Find("Battery1").GetComponent<Battery>();
+        Battery battery2Object = GameObject.Find("Battery2").GetComponent<Battery>();
+        Battery battery3Object = GameObject.Find("Battery3").GetComponent<Battery>();
+        batteries = new Battery[3];
+        batteries[0] = battery1Object;
+        batteries[1] = battery2Object;
+        batteries[2] = battery3Object;
     }
 	
 	// Update is called once per frame
 	void Update () {
 	}
+
+    public int GetBatteryLife()
+    {
+        return (int) Math.Ceiling(batteryLife);
+    }
+
+    public void CollectBattery()
+    {
+        if (numberOfBatteries < maxBatteries)
+            numberOfBatteries++;
+        UpdateBatteries();
+    }
+
+    public void DrainBattery(float amount)
+    {
+        batteryLife -= amount;
+        if (batteryLife <= 0)
+        {
+            NextBattery();
+        }
+    }
+
+    void NextBattery()
+    {
+        numberOfBatteries -= 1;
+        batteries[numberOfBatteries].Off();
+        if (numberOfBatteries > 0)
+        {
+            batteries[numberOfBatteries - 1].MakeCurrentBattery();
+            batteryLife = 100;
+        }
+        UpdateBatteries();
+    }
+
+    void UpdateBatteries()
+    {
+        for (int i = 0; i < maxBatteries; i++)
+        {
+            Debug.LogWarning("BATTERY");
+            if (i < numberOfBatteries)
+            {
+                batteries[i].On();
+                batteries[i].MakeBackupBattery();
+            }
+            if (i == numberOfBatteries-1)
+                batteries[i].MakeCurrentBattery();
+            if (i >= numberOfBatteries)
+                batteries[i].Off();
+        }
+    }
 
     /// <summary>
     /// Initializes scare/confidence sliders and values.

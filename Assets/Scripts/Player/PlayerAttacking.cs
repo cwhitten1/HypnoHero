@@ -19,8 +19,12 @@ public class PlayerAttacking : MonoBehaviour
 
     float flashlightRange;
     float flashlightIntensity;
+    float flashlightBatteryDrainSpeed = 20;/// <summary>
+    /// percentage per second flashlight is being used
+    /// </summary>
 
-	void Awake ()
+
+    void Awake ()
 	{
 		attackableMask = LayerMask.NameToLayer ("Attackable");
 		attackCollider = GetComponent<BoxCollider> ();
@@ -50,27 +54,13 @@ public class PlayerAttacking : MonoBehaviour
         if (Input.GetButton ("Fire1") && timer >= timeBetweenAttacks && Time.timeScale != 0)
 		{
 			Attack ();
-			Debug.LogWarning ("Attacking");
+            Game.GetGame().CollectBattery();
+			//Debug.LogWarning ("Attacking");
 		}
 
-        if (Input.GetButton("Fire2"))
+        if (Input.GetButton("Fire2") && Game.GetGame().GetBatteryLife() > 0)
         {
             FlashlightOn();
-
-            Ray shootRay = new Ray(transform.position, transform.forward);
-            RaycastHit shootHit;
-            float range = flashlightRange;
-            int shootableMask = LayerMask.GetMask("Attackable");
-            
-            if (Physics.Raycast(shootRay, out shootHit, range, shootableMask))
-            { 
-                SlimeMovement enemyMovement = shootHit.collider.GetComponent<SlimeMovement>();
-                if (enemyMovement != null)
-                {
-                    enemyMovement.Stun();
-
-                }
-            }
         }
         else
         {
@@ -79,14 +69,65 @@ public class PlayerAttacking : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Makes a ray coming from the flashlight with an angle to the left or right (right positive,
+    /// left negative), with an angle of 0 being a ray goint directly through the center of the light.
+    /// </summary>
+    /// <param name="angle"></param>
+    private Ray MakeFlashlightRay(float angle)
+    {
+        GameObject flashlight = GameObject.Find("Flashlight");
+        Vector3 flashlightPosition = new Vector3(flashlight.transform.position.x, transform.position.y, flashlight.transform.position.z);
+        
+        Ray ray = new Ray(flashlightPosition, Vector3.RotateTowards(transform.forward, transform.right, angle * (float)System.Math.PI / 180.0f, 1));
+        if (angle == 0)
+            ray = new Ray(flashlightPosition, transform.forward);
+        return ray;
+
+    }
+    
+    /// <summary>
+    /// Stun enemies using a ray from the flashlight.
+    /// </summary>
+    /// <param name="ray"></param>
+    private void FlashlightAttack(Ray ray)
+    {
+        RaycastHit shootHit;
+        float range = 200;
+        int shootableMask = LayerMask.GetMask("Attackable");
+        Debug.DrawRay(ray.origin,ray.direction, Color.red);
+        if (Physics.Raycast(ray, out shootHit, range, shootableMask))
+        {
+            SlimeMovement enemyMovement = shootHit.collider.GetComponent<SlimeMovement>();
+            if (enemyMovement != null)
+            {
+                enemyMovement.Stun();
+            }
+        }
+    }
+
     void FlashlightOn()
     {
         GameObject.Find("Flashlight").GetComponent<MeshRenderer>().enabled = true;
         GameObject.Find("FlashlightLight").GetComponent<Light>().intensity = flashlightIntensity;
+        Game.GetGame().DrainBattery(Time.deltaTime*flashlightBatteryDrainSpeed);
+
+
+        ///Shoot several rays to hit enemies with if they come into the light.
+        FlashlightAttack(MakeFlashlightRay(-15));
+
+        FlashlightAttack(MakeFlashlightRay(7));
+
+        FlashlightAttack(MakeFlashlightRay(0));
+
+        FlashlightAttack(MakeFlashlightRay(7));
+
+        FlashlightAttack(MakeFlashlightRay(15));
     }
     
     void FlashlightOff()
     {
+
         GameObject.Find("Flashlight").GetComponent<MeshRenderer>().enabled = false;
         GameObject.Find("FlashlightLight").GetComponent<Light>().intensity = 0;
     }

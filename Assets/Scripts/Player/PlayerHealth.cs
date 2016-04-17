@@ -79,6 +79,7 @@ public class PlayerHealth : MonoBehaviour
 
         playerMovement.enabled = false;
 
+		anim.Stop ();
 		anim.Play ("Dead");
 
 		//game.RestartLevel();
