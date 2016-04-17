@@ -19,7 +19,7 @@ public class Game : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        InitScareAndConfidence(100, 0);
+        InitScareAndConfidence(100, 10);
         numberOfBatteries = 3;
         maxBatteries = 3;
         batteryLife = 100;
@@ -45,6 +45,7 @@ public class Game : MonoBehaviour {
     {
         if (numberOfBatteries < maxBatteries)
             numberOfBatteries++;
+        else batteryLife = 100;
         UpdateBatteries();
     }
 

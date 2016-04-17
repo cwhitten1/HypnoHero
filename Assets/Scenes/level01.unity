@@ -8128,8 +8128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a19cb86f2c59f74bae919c34ab3bc66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePerHit: 20
-  timeBetweenAttacks: 0.25
+  damagePerHit: 30
+  timeBetweenAttacks: 0.4
+  flashlightBatteryDrainSpeed: 30
 --- !u!114 &655034075
 MonoBehaviour:
   m_ObjectHideFlags: 0
