@@ -540,7 +540,7 @@ MonoBehaviour:
   rangeAdjustment: -1
   timerInterval: 0.7
   rangeBound: 10
-  stunTime: 0
+  stunTime: 3
 --- !u!114 &11465206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -801,6 +801,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: confidenceValue
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: stunTime
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
