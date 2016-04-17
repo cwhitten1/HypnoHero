@@ -18,6 +18,7 @@ TagManager:
   - Environment
   - MediKit
   - Pause Menu
+  - Fade
   layers:
   - Default
   - TransparentFX

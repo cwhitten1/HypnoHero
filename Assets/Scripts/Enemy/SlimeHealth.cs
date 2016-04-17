@@ -15,7 +15,7 @@ internal class SlimeHealth : MonoBehaviour
 	public float sinkSpeed = 0.2f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 	Animation anim; 				// Reference to this enemy's animations
-
+ 
 	Collider[] colliders;
     AudioSource slimeAudio;
     SlimeMovement slimeMovement;
@@ -101,6 +101,7 @@ internal class SlimeHealth : MonoBehaviour
         
 		disableColliders ();
 		disableHealthBar ();
+
 
 		float animationDuration = anim ["Dead"].length;
 		float waitTillRemoveTime = 2f;
