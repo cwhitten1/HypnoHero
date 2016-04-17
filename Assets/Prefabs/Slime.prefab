@@ -485,7 +485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   currentHealth: 0
-  confidenceValue: 4
+  confidenceValue: 2
   damageImage: {fileID: 0}
   deathClip: {fileID: 0}
   flashSpeed: 5
@@ -827,6 +827,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: attackArc
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: confidenceValue
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

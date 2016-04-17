@@ -383,7 +383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 80
   currentHealth: 0
-  confidenceValue: 8
+  confidenceValue: 4
   damageImage: {fileID: 0}
   deathClip: {fileID: 0}
   flashSpeed: 5
@@ -802,7 +802,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: confidenceValue
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: stunTime

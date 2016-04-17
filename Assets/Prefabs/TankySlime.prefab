@@ -500,7 +500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 240
   currentHealth: 0
-  confidenceValue: 30
+  confidenceValue: 15
   damageImage: {fileID: 0}
   deathClip: {fileID: 0}
   flashSpeed: 5
@@ -786,7 +786,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: confidenceValue
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Speed
