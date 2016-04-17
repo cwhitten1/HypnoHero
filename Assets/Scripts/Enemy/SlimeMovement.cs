@@ -13,17 +13,15 @@ public class SlimeMovement : MonoBehaviour
 	EnemyAttacking enemyAttacking;  // Reference to the slime's attacking script.
     NavMeshAgent nav;               // Reference to the nav mesh agent.
     GameObject stealthObject;
-    GameObject environment;
+
     Animation anim; 				// Reference to this enemy's animations
 
-    PlayerMovement playerMove;
-    private const float minAttackRange = 3f;
-
-    private float attackRange;
-    public float rangeAdjustment = -.5f;
+	PlayerMovement playerMove;
+   
     public float timerInterval = 1.5f;
-    public float rangeBound = 10f;
+	public float rangeBound = 10f;
     float timeLeft = 0f;
+
 
 	public float stunTime = 3; /// <summary>
 	/// The number of seconds in which a slime is stunned
@@ -36,8 +34,6 @@ public class SlimeMovement : MonoBehaviour
     {
         game = Game.GetGame();
 
-        // Set up the references.
-        environment = GameObject.FindGameObjectWithTag("Environment");
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerHealth = player.GetComponent<PlayerHealth>();
         playerMove = player.GetComponent<PlayerMovement>();
@@ -55,20 +51,13 @@ public class SlimeMovement : MonoBehaviour
 
     void Update()
     {
-        float slimeScaleFactor = environment.GetComponent<SlimeScaling>().scaleFactor;
-        attackRange = minAttackRange * slimeScaleFactor + rangeAdjustment;
-        Debug.Log("Setting new attack range: " + attackRange);
 
-        float distanceFromPlayer = Mathf.Pow(player.position.x - nav.nextPosition.x, 2) + Mathf.Pow(player.position.z - nav.nextPosition.z, 2);
-        distanceFromPlayer = Mathf.Sqrt(distanceFromPlayer);
-
-        if (!nav.enabled && distanceFromPlayer > attackRange)
+		bool outOfRange = !enemyAttacking.CheckIfInAttackRange ();
+		if (!nav.enabled && outOfRange)
             SetNavEnabled(true);
 
-        bool playerAlive = playerHealth.currentHealth > 0,
-        mobAlive = enemyHealth.currentHealth > 0,
-        outOfRange = distanceFromPlayer > attackRange;
-
+		bool playerAlive = playerHealth.currentHealth > 0,
+		mobAlive = enemyHealth.currentHealth > 0;
 
 
         if (mobAlive && playerAlive)
@@ -142,8 +131,4 @@ public class SlimeMovement : MonoBehaviour
         }
 
     }
-
-	public float GetAttackRange(){
-		return attackRange;
-	}
 }
