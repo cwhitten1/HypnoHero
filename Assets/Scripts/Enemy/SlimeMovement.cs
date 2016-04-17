@@ -162,4 +162,8 @@ public class SlimeMovement : MonoBehaviour
         }
 
     }
+
+	public float GetAttackRange(){
+		return attackRange;
+	}
 }

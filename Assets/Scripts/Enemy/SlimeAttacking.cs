@@ -6,6 +6,9 @@ public class SlimeAttacking : EnemyAttacking
 	Animation anim; 				// Reference to this enemy's animations
 	Transform player;               // Reference to the player's position.
 	PlayerHealth playerHealth;
+	SlimeMovement slimeMovement;
+
+	public float attackArc = 60;         // How far away from forward this enemy can attack
 
 	// Use this for initialization
 	void Start ()
@@ -15,6 +18,7 @@ public class SlimeAttacking : EnemyAttacking
 
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 		playerHealth = player.GetComponent<PlayerHealth>();
+		slimeMovement = GetComponent<SlimeMovement> ();
 	}
 	
 	// Update is called once per frame
@@ -32,7 +36,19 @@ public class SlimeAttacking : EnemyAttacking
 	}
 
 	void DamagePlayer(){
-		player.GetComponent<PlayerHealth>().TakeDamage(damage);
+		if(checkIfFacingPlayerAndInAttackRange())
+			player.GetComponent<PlayerHealth>().TakeDamage(damage);
+	}
+
+	bool checkIfFacingPlayerAndInAttackRange(){
+		Vector3 directionToTarget = player.transform.position -transform.position;
+		float angle = Vector3.Angle (transform.forward, directionToTarget);
+		float range = directionToTarget.magnitude;
+
+		if (Mathf.Abs (angle) < attackArc && range < slimeMovement.GetAttackRange ()) {
+			return true;
+		} else
+			return false;
 	}
 }
 
