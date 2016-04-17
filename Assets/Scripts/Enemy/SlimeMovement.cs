@@ -20,6 +20,8 @@ public class SlimeMovement : MonoBehaviour
    
     public float timerInterval = 1.5f;
 	public float rangeBound = 10f;
+
+	public float rotateSpeed = 2f;
     float timeLeft = 0f;
 
 
@@ -80,9 +82,13 @@ public class SlimeMovement : MonoBehaviour
 					nav.SetDestination (player.position);
 				} 
 				else {
-					enemyAttacking.Attack();
-					//Debug.Log("Player in range and not stealth");
+					
 					SetNavEnabled(false);
+					if (enemyAttacking.CheckIfFacingPlayer ())
+						enemyAttacking.Attack ();
+					else
+						RotateSlimeTowardsPlayer ();
+					//Debug.Log("Player in range and not stealth");
 				}
             }
         }
@@ -137,4 +143,16 @@ public class SlimeMovement : MonoBehaviour
         }
 
     }
+
+	void RotateSlimeTowardsPlayer(){
+		Vector3 directionToTarget = player.transform.position -transform.position;
+		float angle = Vector3.Angle (transform.forward, directionToTarget);
+
+		float rotation = rotateSpeed;
+
+		if (angle < 0)
+			rotation *= -1;
+
+		transform.Rotate (new Vector3 (0, rotation, 0));
+	}
 }
