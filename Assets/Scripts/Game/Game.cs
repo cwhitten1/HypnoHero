@@ -60,10 +60,12 @@ public class Game : MonoBehaviour {
     void NextBattery()
     {
         numberOfBatteries -= 1;
-        batteryLife = 100;
         batteries[numberOfBatteries].Off();
-        if(numberOfBatteries>0)
-            batteries[numberOfBatteries-1].MakeCurrentBattery();
+        if (numberOfBatteries > 0)
+        {
+            batteries[numberOfBatteries - 1].MakeCurrentBattery();
+            batteryLife = 100;
+        }
         UpdateBatteries();
     }
 
