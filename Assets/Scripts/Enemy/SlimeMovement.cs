@@ -73,47 +73,27 @@ public class SlimeMovement : MonoBehaviour
 
         if (mobAlive && playerAlive)
         {
-            //Player out of attack range.
-            if (outOfRange)
+            //Player stealth.
+            if (playerMove.isStealth)
             {
-                //Or not attacking?
-                if (nav.enabled)
-                {
-                    //Player stealth.
-                    if (playerMove.isStealth)
-                    {
-                        stealthObject = GameObject.FindGameObjectWithTag("Player")
-                            .GetComponent<PlayerMovement>()
-                            .stealthObject;
-                        RunAway();
-                    }
-                    //Player not stealth.
-                    else
-                    {
-                        //Debug.Log("Chasing player.");
-                        nav.SetDestination(player.position);
-                    }
-                }
+                stealthObject = GameObject.FindGameObjectWithTag("Player")
+                    .GetComponent<PlayerMovement>()
+                    .stealthObject;
+                RunAway();
             }
-            //Player in attack range.
+            //Player not stealth.
             else
             {
-                //Is stealth.
-                if (playerMove.isStealth)
-                {
-                    //Debug.Log("Player in range and stealth");
-                    RunAway();
-                }
-
-                //Player not stealth.
-                else
-                {
-                    enemyAttacking.Attack();
-                    //Debug.Log("Player in range and not stealth");
-                    SetNavEnabled(false);
-                }
+				if (outOfRange) {
+					//Debug.Log("Chasing player.");
+					nav.SetDestination (player.position);
+				} 
+				else {
+					enemyAttacking.Attack();
+					//Debug.Log("Player in range and not stealth");
+					SetNavEnabled(false);
+				}
             }
-
         }
     }
     
