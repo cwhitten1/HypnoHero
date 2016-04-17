@@ -19,7 +19,7 @@ public class PlayerAttacking : MonoBehaviour
 
     float flashlightRange;
     float flashlightIntensity;
-    float flashlightBatteryDrainSpeed = 20;/// <summary>
+    public float flashlightBatteryDrainSpeed;/// <summary>
     /// percentage per second flashlight is being used
     /// </summary>
 
@@ -58,7 +58,6 @@ public class PlayerAttacking : MonoBehaviour
         if (Input.GetButton ("Fire1") && timer >= timeBetweenAttacks && Time.timeScale != 0)
 		{
 			Attack ();
-            Game.GetGame().CollectBattery();
 			//Debug.LogWarning ("Attacking");
 		}
 
