@@ -14,7 +14,7 @@ internal class SlimeHealth : MonoBehaviour
     public float flashSpeed = 5f;
 	public float sinkSpeed = 0.2f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
-	public float damagedAttackDelay = 1.0f; //The time in seconds to wait before attacking if the slime is damaged
+	public float damagedAttackDelay = 1.5f; //The time in seconds to wait before attacking if the slime is damaged
 	Animation anim; 				// Reference to this enemy's animations
 
 	Collider[] colliders;

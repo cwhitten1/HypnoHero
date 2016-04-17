@@ -23,18 +23,12 @@ public class SlimeAttacking : EnemyAttacking
 	
 	}
 
-	public override void Attack ()
+	protected override void doAttack ()
 	{
-		if (canEnemyAttack())
-		{
-
 			anim.CrossFade("Attack");
 
 			float animationDuration = anim ["Attack"].length;
 			Invoke ("DamagePlayer", animationDuration/2);
-
-			AttackWait();
-		}
 	}
 
 	void DamagePlayer(){

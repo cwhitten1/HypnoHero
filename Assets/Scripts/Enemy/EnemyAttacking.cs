@@ -8,6 +8,7 @@ public abstract class EnemyAttacking : MonoBehaviour
 	public int damage = 3;                     // How much damage the enemy does.
 	public int attackWaitPeriod = 1000;        // How long the enemy will wait between attacks. (in milliseconds)
 	bool canAttack = true;
+	bool attackOnCooldown = false;
 
 	// Use this for initialization
 	void Start ()
@@ -21,15 +22,27 @@ public abstract class EnemyAttacking : MonoBehaviour
 	
 	}
 
-	public abstract void Attack(); 
+	public void Attack(){
+		if (canAttack && !attackOnCooldown) {
+			doAttack ();
+			AttackWait ();
+		}
+	}
+
+	protected abstract void doAttack ();
+		
 
 	public void DisableAttacking(){
 		canAttack = false;
 	}
 
+	/// <summary>
+	/// Enables attacking if the attack is off cooldown
+	/// </summary>
 	public void EnableAttacking(){
 		canAttack = true;
 	}
+		
 
 	public bool canEnemyAttack(){
 		return canAttack;
@@ -41,7 +54,7 @@ public abstract class EnemyAttacking : MonoBehaviour
 	/// </summary>
 	protected void AttackWait()
 	{
-		DisableAttacking ();
+		attackOnCooldown = true;
 
 		Timer t = new Timer();
 		t.Elapsed += new ElapsedEventHandler(AttackWaitFinished);
@@ -55,7 +68,7 @@ public abstract class EnemyAttacking : MonoBehaviour
 	/// </summary>
 	void AttackWaitFinished(object sender, ElapsedEventArgs args)
 	{
-		EnableAttacking ();
+		attackOnCooldown = false;
 		((Timer)sender).Dispose();
 	}
 
