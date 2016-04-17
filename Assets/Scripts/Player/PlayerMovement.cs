@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
         {
 
 			bool objCollision = obj.GetComponent<StealthObjects> ().isStealth;
-            if (objCollision)
+            if (objCollision && game.GetConfidence() > 0)
             {
                 isStealth = true;
                 SetStealth(isStealth);
