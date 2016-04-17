@@ -144,7 +144,7 @@ public class SlimeMovement : MonoBehaviour
         timeLeft -= Time.deltaTime;
         if (timeLeft < 0)
         {
-            if (!nav.enabled) nav.enabled = true;
+            if (!nav.enabled) SetNavEnabled(true);
             bool isInBounds = true;
             Vector3 nextPos;
             while (isInBounds)
