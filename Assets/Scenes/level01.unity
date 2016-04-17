@@ -18232,7 +18232,7 @@ GameObject:
   - 114: {fileID: 1442770644}
   - 114: {fileID: 1442770643}
   m_Layer: 5
-  m_Name: Player Canvas Shit
+  m_Name: Player Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
