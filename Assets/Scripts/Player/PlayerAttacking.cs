@@ -152,7 +152,6 @@ public class PlayerAttacking : MonoBehaviour
 
 	void DamageAttackableObject()
 	{
-        Debug.Log(damagePerHit);
 		attackableObject.GetComponent<SlimeHealth>().TakeDamage (damagePerHit);
 	}
 

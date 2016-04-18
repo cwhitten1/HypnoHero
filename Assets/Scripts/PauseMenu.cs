@@ -35,22 +35,27 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void PauseGame()
+	public void PauseGame()
     {
-        GameObject.Find("GOTitle").GetComponent<Text>().text = "Paused";
-        GameObject.Find("GOBackground").GetComponent<Image>().color = pauseBG;
-        GameObject.Find("GOTryAgain").GetComponent<Text>().enabled = false;
-        GameObject.Find("GOMenu").GetComponent<Text>().enabled = false;
-        menu.GetComponent<AudioSource>().Play();
 
-        paused = !paused;
+			GameObject.Find ("GOTitle").GetComponent<Text> ().text = "Paused";
+			GameObject.Find ("GOBackground").GetComponent<Image> ().color = pauseBG;
+			GameObject.Find ("GOTryAgain").GetComponent<Text> ().enabled = false;
+			GameObject.Find ("GOMenu").GetComponent<Text> ().enabled = false;
+			menu.GetComponent<AudioSource> ().Play ();     
 
-        if (paused) Time.timeScale = 0;
-        else Time.timeScale = 1;
-
-        menuCanvas.enabled = paused;
+        menuCanvas.enabled = !paused;
+		TogglePause ();
     }
 
+	public void TogglePause(){
+		paused = !paused;
+
+		if (paused)
+			Time.timeScale = 0;
+		else
+			Time.timeScale = 1;
+	}
     public void GameOver()
     {
 		gameOver = true;

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-
+using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -81,8 +81,12 @@ public class PlayerHealth : MonoBehaviour
 		anim.Play ("Dead");
 
         //Add timer here for player death animation.
-        GameObject.Find("Pause Menu").GetComponent<PauseMenu>().GameOver();
-        
+		StartCoroutine(waitPls());
     }
 
+	IEnumerator waitPls(){
+
+		yield return new WaitForSeconds(2f);
+		GameObject.Find("Pause Menu").GetComponent<PauseMenu>().GameOver();
+	}
 }

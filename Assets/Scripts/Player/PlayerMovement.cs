@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private float rotationSmoothing = 10f;
 
 
-    public float stealthConfidenceSubtractFactor = 2; /// <summary>
+    public float stealthConfidenceSubtractFactor = 3; /// <summary>
                                                       /// The amount of confidence subtracted per second when in stealth.
                                                       /// </summary>
 
