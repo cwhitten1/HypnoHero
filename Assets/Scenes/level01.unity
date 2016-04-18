@@ -4881,7 +4881,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c24f539cfae8dfa4997411ea20945888, type: 2}
       propertyPath: m_RootOrder
-      value: 28
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c24f539cfae8dfa4997411ea20945888, type: 2}
       propertyPath: m_LocalScale.x
@@ -18560,6 +18560,7 @@ GameObject:
   - 23: {fileID: 910099722}
   - 33: {fileID: 910099721}
   - 114: {fileID: 910099723}
+  - 65: {fileID: 910099724}
   m_Layer: 0
   m_Name: Trash
   m_TagString: Stealth
@@ -18574,7 +18575,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 910099719}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -36.2, y: 1.68, z: -11.91}
+  m_LocalPosition: {x: -17.5, y: 1.6800003, z: 1.7800007}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children: []
   m_Father: {fileID: 943360824}
@@ -18624,6 +18625,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStealth: 0
+--- !u!65 &910099724
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 910099719}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.04371145, y: 0.0604345, z: 0.04371145}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &916783538
 GameObject:
   m_ObjectHideFlags: 0
@@ -19141,9 +19154,9 @@ Transform:
   - {fileID: 910099720}
   - {fileID: 652245446}
   - {fileID: 157268244}
+  - {fileID: 1245396007}
   - {fileID: 120782762}
   - {fileID: 1712922941}
-  - {fileID: 1245396007}
   m_Father: {fileID: 1067649047}
   m_RootOrder: 6
 --- !u!1 &943639046
@@ -24523,7 +24536,7 @@ Transform:
   m_LocalScale: {x: 15, y: 22, z: 15}
   m_Children: []
   m_Father: {fileID: 943360824}
-  m_RootOrder: 30
+  m_RootOrder: 28
 --- !u!198 &1245396008
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -36656,7 +36669,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c24f539cfae8dfa4997411ea20945888, type: 2}
       propertyPath: m_RootOrder
-      value: 29
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c24f539cfae8dfa4997411ea20945888, type: 2}
       propertyPath: m_LocalScale.x
