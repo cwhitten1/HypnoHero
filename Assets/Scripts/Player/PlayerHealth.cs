@@ -80,7 +80,7 @@ public class PlayerHealth : MonoBehaviour
 		anim.Stop ();
 		anim.Play ("Dead");
 
-        //game.RestartLevel();
+        //Add timer here for player death animation.
         GameObject.Find("Pause Menu").GetComponent<PauseMenu>().GameOver();
         
     }

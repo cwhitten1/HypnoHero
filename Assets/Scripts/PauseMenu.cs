@@ -53,6 +53,7 @@ public class PauseMenu : MonoBehaviour
 
     public void GameOver()
     {
+		gameOver = true;
         menuCanvas.enabled = true;
         menu.GetComponentInChildren<Image>().color = gameoverBG;
         GameObject.Find("GOTitle").GetComponent<Text>().text = "Game Over";
