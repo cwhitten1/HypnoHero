@@ -6,6 +6,7 @@ public class StartMenu : MonoBehaviour {
 	private GameObject startGame;
 	private GameObject exitGame;
     private Bounds startBounds, endBounds;
+    private bool gameStarted = false;
     // Use this for initialization
     void Start () {
 		startGame = GameObject.Find ("Start");
@@ -22,9 +23,11 @@ public class StartMenu : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
+        if (gameStarted) return;
 		var mousePos = Input.mousePosition;
         if (startBounds.Contains(mousePos))
         {
+            gameStarted = true;
             startGame.GetComponentInParent<AudioSource>().Play();
             SceneManager.LoadScene("level01");
         }
