@@ -13105,6 +13105,7 @@ GameObject:
   - 114: {fileID: 645712414}
   - 114: {fileID: 645712413}
   - 114: {fileID: 645712417}
+  - 82: {fileID: 645712418}
   m_Layer: 5
   m_Name: Player Notes
   m_TagString: GameController
@@ -13196,6 +13197,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f2ca920f94dba45b8ee325f015876f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &645712418
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 645712412}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 10430996687031d44924f975a8e81e39, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &648762928
 GameObject:
   m_ObjectHideFlags: 0
@@ -20114,6 +20189,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseBG: {r: 0, g: 0, b: 0, a: 0}
   gameoverBG: {r: 0, g: 0, b: 0, a: 0}
+  pauseSound: {fileID: 0}
+  gameOverSound: {fileID: 0}
+  gameWonSound: {fileID: 0}
 --- !u!4 &1067649047
 Transform:
   m_ObjectHideFlags: 0
@@ -26795,6 +26873,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseBG: {r: 0, g: 0, b: 0, a: 0.57254905}
   gameoverBG: {r: 0, g: 0, b: 0, a: 1}
+  pauseSound: {fileID: 8300000, guid: 8a9331deffa2cf2418b317496d9ac743, type: 3}
+  gameOverSound: {fileID: 8300000, guid: 13388f1750551af4ea60e2c5f90da969, type: 3}
+  gameWonSound: {fileID: 8300000, guid: 4fdc2dceeb1d689479af6ffab2ed2aab, type: 3}
 --- !u!114 &1313199721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38744,7 +38825,9 @@ MonoBehaviour:
 
     RCLICK - Flashlight (stun)
 
-    WASD/ARROWS - Movement'
+    WASD/ARROWS - Movement
+
+    ESC/P - Pause'
 --- !u!222 &1906561245
 CanvasRenderer:
   m_ObjectHideFlags: 0

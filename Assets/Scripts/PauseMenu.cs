@@ -10,7 +10,9 @@ public class PauseMenu : MonoBehaviour
     private bool paused = false;
     private Bounds tryAgainBounds, menuBounds;
     public Color pauseBG, gameoverBG;
+	public AudioClip pauseSound, gameOverSound, gameWonSound;
     bool gameOver = false;
+	AudioSource audio;
     private void Start()
     {
         menu = GameObject.FindGameObjectWithTag("Pause Menu");
@@ -18,6 +20,7 @@ public class PauseMenu : MonoBehaviour
         menuBounds = GameObject.Find("GOMenu").GetComponent<BoxCollider2D>().bounds;
         menuCanvas = menu.GetComponent<Canvas>();
         menuCanvas.enabled = false;
+		audio = menu.GetComponent<AudioSource> ();
         StartCoroutine(PauseRoutine());
     }
 
@@ -29,6 +32,7 @@ public class PauseMenu : MonoBehaviour
                 OnMouseDown();
 			if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
             {
+				if (!gameOver)
                 PauseGame();
             }
             yield return null;
@@ -42,6 +46,7 @@ public class PauseMenu : MonoBehaviour
 			GameObject.Find ("GOBackground").GetComponent<Image> ().color = pauseBG;
 			GameObject.Find ("GOTryAgain").GetComponent<Text> ().enabled = false;
 			GameObject.Find ("GOMenu").GetComponent<Text> ().enabled = false;
+			audio.clip = pauseSound;
 			menu.GetComponent<AudioSource> ().Play ();     
 
         menuCanvas.enabled = !paused;
@@ -57,7 +62,9 @@ public class PauseMenu : MonoBehaviour
 			Time.timeScale = 1;
 	}
     public void GameOver()
-    {
+	{
+		audio.clip = gameOverSound;
+		menu.GetComponent<AudioSource> ().Play ();    
 		gameOver = true;
         menuCanvas.enabled = true;
         menu.GetComponentInChildren<Image>().color = gameoverBG;
@@ -65,6 +72,17 @@ public class PauseMenu : MonoBehaviour
         GameObject.Find("GOTryAgain").GetComponent<Text>().enabled = true;
         GameObject.Find("GOMenu").GetComponent<Text>().enabled = true;
     }
+
+	public void GameWon(){
+		audio.clip = gameWonSound;
+		menu.GetComponent<AudioSource> ().Play ();    
+		gameOver = true;
+		menuCanvas.enabled = true;
+		menu.GetComponentInChildren<Image>().color = gameoverBG;
+		GameObject.Find("GOTitle").GetComponent<Text>().text = "Nightmare No More!";
+		GameObject.Find("GOTryAgain").GetComponent<Text>().enabled = true;
+		GameObject.Find("GOMenu").GetComponent<Text>().enabled = true;
+	}
 
     void OnMouseDown()
     {

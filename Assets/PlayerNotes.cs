@@ -22,6 +22,7 @@ public class PlayerNotes : MonoBehaviour {
 	}
 
 	public void removeNotes(){
+		GameObject.Find ("Player Notes").GetComponent<AudioSource> ().Play ();
 		hasNotes = false;
 		GameObject.Find ("Player Notes").SetActive (false);
 		GameObject.Find ("Pause Menu").GetComponent<PauseMenu> ().TogglePause ();

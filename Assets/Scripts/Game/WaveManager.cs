@@ -34,6 +34,8 @@ public class WaveManager : MonoBehaviour
 			if (currWaveIndex < waves.Length) {
 				currWave = waves [currWaveIndex];
 				currWave.startWave (spawnPoints);
+			} else {
+				GameObject.Find ("Pause Menu").GetComponent<PauseMenu> ().GameWon ();
 			}
 		}
 	}
