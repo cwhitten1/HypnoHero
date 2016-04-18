@@ -99,7 +99,7 @@ public class Game : MonoBehaviour {
         confidenceSlider = GameObject.Find("ConfidenceMeter").GetComponent<Slider>();
         scareSlider = GameObject.Find("ScareMeter").GetComponent<Slider>();
         UpdateSlider(confidenceSlider, confidenceMeter);
-        UpdateSlider(scareSlider, scareMeter);
+        UpdateSlider(scareSlider, 100-scareMeter);
     }
 
     /// <summary>
@@ -158,7 +158,7 @@ public class Game : MonoBehaviour {
         scareMeter += amount;
         if (scareMeter > 100)
             scareMeter = 100;
-        UpdateSlider(scareSlider, scareMeter);
+        UpdateSlider(scareSlider, 100-scareMeter);
     }
 
     /// <summary>
@@ -169,7 +169,7 @@ public class Game : MonoBehaviour {
         scareMeter -= amount;
         if (scareMeter < 0)
             scareMeter = 0;
-        UpdateSlider(scareSlider, scareMeter);
+        UpdateSlider(scareSlider, 100-scareMeter);
     }
 
    
