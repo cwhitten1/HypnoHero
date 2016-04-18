@@ -458,7 +458,7 @@ Transform:
   m_PrefabParentObject: {fileID: 447960, guid: daabafbd6acd6994d885a612510ea80c, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 15728620}
-  m_LocalRotation: {x: -0.60154045, y: -0.3716843, z: -0.3716845, w: 0.60154027}
+  m_LocalRotation: {x: -0.6015404, y: -0.37168428, z: -0.37168446, w: 0.6015402}
   m_LocalPosition: {x: 781.2, y: -0.00000016390749, z: -265.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -5966,8 +5966,8 @@ MonoBehaviour:
     your fear of germs by slaying the different types of enemies that come your way.
     \n\nThere are 6 waves of enemies that will approach. Each wave increases the number
     of enemies dream of scaring you. Gather confidence and realize the slimes are
-    not so scary!\n\nYou may hide at the designated areas, but you will begin to lose
-    confidence as you dwell on your worries."
+    not so scary! Don't let your scare meter fill up!\n\nYou may hide at the designated
+    areas, but you will begin to lose confidence as you dwell on your worries."
 --- !u!222 &212538624
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26888,7 +26888,7 @@ MonoBehaviour:
   gameoverBG: {r: 0, g: 0, b: 0, a: 1}
   pauseSound: {fileID: 8300000, guid: 8a9331deffa2cf2418b317496d9ac743, type: 3}
   gameOverSound: {fileID: 8300000, guid: 13388f1750551af4ea60e2c5f90da969, type: 3}
-  gameWonSound: {fileID: 8300000, guid: 4fdc2dceeb1d689479af6ffab2ed2aab, type: 3}
+  gameWonSound: {fileID: 8300000, guid: 29070a474db7e2a42a17f6e30529e1b8, type: 3}
 --- !u!114 &1313199721
 MonoBehaviour:
   m_ObjectHideFlags: 0
