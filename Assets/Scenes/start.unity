@@ -182,10 +182,10 @@ RectTransform:
   m_LocalScale: {x: 1.3548449, y: 0.674994, z: 1}
   m_Children: []
   m_Father: {fileID: 1928874724}
-  m_RootOrder: 3
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 80, y: 85}
+  m_RootOrder: 4
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 63, y: -168}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &371145567
@@ -209,7 +209,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: b7e30c02234529e4bba3a096614e5ee1, type: 3}
-    m_FontSize: 35
+    m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -238,9 +238,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -35.8693, y: -6.090097}
+  m_Offset: {x: -7.3974514, y: -28.391998}
   serializedVersion: 2
-  m_Size: {x: 88.146835, y: 40.562244}
+  m_Size: {x: 145.09055, y: 85.16605}
 --- !u!82 &371145570
 AudioSource:
   m_ObjectHideFlags: 0
@@ -340,13 +340,13 @@ RectTransform:
   m_GameObject: {fileID: 708076864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_LocalScale: {x: 1.5630468, y: 1.5974998, z: 0.9}
   m_Children: []
   m_Father: {fileID: 1928874724}
   m_RootOrder: 7
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -199, y: 108}
+  m_AnchoredPosition: {x: -324.06, y: 171}
   m_SizeDelta: {x: 238, y: 185}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &708076866
@@ -407,13 +407,13 @@ RectTransform:
   m_GameObject: {fileID: 927331589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_LocalScale: {x: 1.5630468, y: 1.5974998, z: 0.9}
   m_Children: []
   m_Father: {fileID: 1928874724}
   m_RootOrder: 6
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -136, y: 131}
+  m_AnchoredPosition: {x: -214.81, y: 211}
   m_SizeDelta: {x: 238, y: 185}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &927331591
@@ -504,7 +504,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 96245e7ac330be848842d5d1fe29eece, type: 3}
-    m_FontSize: 40
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -547,13 +547,13 @@ RectTransform:
   m_GameObject: {fileID: 1133508317}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_LocalScale: {x: 1.5630468, y: 1.5974998, z: 0.9}
   m_Children: []
   m_Father: {fileID: 1928874724}
   m_RootOrder: 8
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -75, y: 108}
+  m_AnchoredPosition: {x: -107.94, y: 171}
   m_SizeDelta: {x: 238, y: 185}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1133508319
@@ -617,7 +617,7 @@ RectTransform:
   m_LocalScale: {x: 1.275, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1928874724}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 2, y: -162}
@@ -644,7 +644,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 96245e7ac330be848842d5d1fe29eece, type: 3}
-    m_FontSize: 20
+    m_FontSize: 35
     m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 0
@@ -692,10 +692,10 @@ RectTransform:
   m_LocalScale: {x: 1.3548449, y: 0.674994, z: 1}
   m_Children: []
   m_Father: {fileID: 1928874724}
-  m_RootOrder: 2
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 32, y: 143}
+  m_RootOrder: 3
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -34, y: -14}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1537022758
@@ -719,7 +719,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: b7e30c02234529e4bba3a096614e5ee1, type: 3}
-    m_FontSize: 35
+    m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -748,9 +748,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -6.3076324}
+  m_Offset: {x: 63.193707, y: -28.610823}
   serializedVersion: 2
-  m_Size: {x: 159.88538, y: 40.99734}
+  m_Size: {x: 286.2724, y: 85.6037}
 --- !u!82 &1537022761
 AudioSource:
   m_ObjectHideFlags: 0
@@ -998,9 +998,9 @@ RectTransform:
   m_Children:
   - {fileID: 141370092}
   - {fileID: 947044432}
+  - {fileID: 1168345302}
   - {fileID: 1537022757}
   - {fileID: 371145566}
-  - {fileID: 1168345302}
   - {fileID: 2006586567}
   - {fileID: 927331590}
   - {fileID: 708076865}
@@ -1122,13 +1122,13 @@ RectTransform:
   m_GameObject: {fileID: 2006586566}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.7499787, y: 1.5999998, z: 1}
   m_Children: []
   m_Father: {fileID: 1928874724}
   m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 78, y: 146.5}
+  m_AnchoredPosition: {x: 284, y: 212}
   m_SizeDelta: {x: 230, y: 241}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2006586568

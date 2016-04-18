@@ -11,7 +11,7 @@ public class PauseMenu : MonoBehaviour
     private Bounds tryAgainBounds, menuBounds;
     public Color pauseBG, gameoverBG;
 	public AudioClip pauseSound, gameOverSound, gameWonSound;
-    bool gameOver = false;
+    bool gameOver = false, hasNotes;
 	AudioSource audio;
     private void Start()
     {
@@ -27,7 +27,7 @@ public class PauseMenu : MonoBehaviour
     IEnumerator PauseRoutine()
     {
         while (true)
-        {
+		{
             if (Input.GetMouseButtonDown(0))
                 OnMouseDown();
 			if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
