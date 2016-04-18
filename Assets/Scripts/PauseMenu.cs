@@ -75,7 +75,7 @@ public class PauseMenu : MonoBehaviour
 
 	public void GameWon(){
 		audio.clip = gameWonSound;
-		menu.GetComponent<AudioSource> ().Play ();    
+		//menu.GetComponent<AudioSource> ().Play ();    
 		gameOver = true;
 		menuCanvas.enabled = true;
 		menu.GetComponentInChildren<Image>().color = gameoverBG;

@@ -8,14 +8,16 @@ public class WaveManager : MonoBehaviour
 	private int currWaveIndex = 0;
 	private Wave currWave;
 	private float timeBetweenChecks = 5f; //Make sure we aren't checking for wave clearing every frame
-
+	private AudioSource audio;
 	// Use this for initialization
 	void Start ()
 	{
+		audio = GetComponent<AudioSource> ();
 		if (waves.Length > 0) 
 		{
 			currWave = waves [0];
 			currWave.startWave (spawnPoints);
+			audio.Play ();
 		}
 
 		InvokeRepeating ("advanceWave", 2, timeBetweenChecks);
@@ -34,6 +36,7 @@ public class WaveManager : MonoBehaviour
 			if (currWaveIndex < waves.Length) {
 				currWave = waves [currWaveIndex];
 				currWave.startWave (spawnPoints);
+				audio.Play ();
 			} else {
 				GameObject.Find ("Pause Menu").GetComponent<PauseMenu> ().GameWon ();
 			}

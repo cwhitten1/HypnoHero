@@ -16,7 +16,7 @@ Platform assembly: C:\Users\Matthew\Documents\Github\HypnoHero\HypnoHero_Data\Ma
 Loading C:\Users\Matthew\Documents\Github\HypnoHero\HypnoHero_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\Matthew\Documents\Github\HypnoHero\HypnoHero_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\Matthew\Documents\Github\HypnoHero\HypnoHero_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.667 seconds
+- Completed reload, in  0.349 seconds
 Platform assembly: C:\Users\Matthew\Documents\Github\HypnoHero\HypnoHero_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Matthew\Documents\Github\HypnoHero\HypnoHero_Data\Managed\System.dll (this message is harmless)
 Platform assembly: C:\Users\Matthew\Documents\Github\HypnoHero\HypnoHero_Data\Managed\UnityScript.Lang.dll (this message is harmless)
@@ -25,4 +25,4 @@ desktop: 1920x1080 40Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.160600 ms
+UnloadTime: 1.764420 ms
