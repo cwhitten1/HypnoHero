@@ -62,7 +62,7 @@ public class PauseMenu : MonoBehaviour
 
     void OnMouseDown()
     {
-
+        if (!gameOver) return;
         var mousePos = Input.mousePosition;
         if (tryAgainBounds.Contains(mousePos))
         {
