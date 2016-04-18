@@ -112,6 +112,7 @@ public class PlayerAttacking : MonoBehaviour
     void FlashlightOn()
     {
         GameObject.Find("Flashlight").GetComponent<MeshRenderer>().enabled = true;
+        GameObject.Find("Sword02").GetComponent<SkinnedMeshRenderer>().enabled = false;
         GameObject.Find("FlashlightLight").GetComponent<Light>().intensity = flashlightIntensity;
         Game.GetGame().DrainBattery(Time.deltaTime*flashlightBatteryDrainSpeed);
 
@@ -132,6 +133,7 @@ public class PlayerAttacking : MonoBehaviour
     {
 
         GameObject.Find("Flashlight").GetComponent<MeshRenderer>().enabled = false;
+        GameObject.Find("Sword02").GetComponent<SkinnedMeshRenderer>().enabled = true;
         GameObject.Find("FlashlightLight").GetComponent<Light>().intensity = 0;
     }
 
